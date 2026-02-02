@@ -1,6 +1,0 @@
-Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/autonomous_navigation -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/autonomous_navigation
-Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/autonomous_navigation -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/autonomous_navigation
-Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/autonomous_navigation -- -j12 -l12
-Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/autonomous_navigation -- -j12 -l12
-Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/autonomous_navigation
-Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/autonomous_navigation

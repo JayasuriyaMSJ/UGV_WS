@@ -66,10 +66,10 @@ if command -v nvidia-smi &> /dev/null; then
     nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader 2>/dev/null || true
     
     # Check if nvidia-container-toolkit is installed
-    if docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi &> /dev/null; then
+    if docker run --rm --gpus all nvidia/cuda:13.1.1-base-ubuntu22.04 nvidia-smi &> /dev/null; then
         echo "✓ NVIDIA Container Toolkit detected"
         echo "✓ GPU support will be enabled"
-        BASE_IMAGE="nvidia/cuda:11.8.0-runtime-ubuntu22.04"
+        BASE_IMAGE="nvidia/cuda:13.1.1-base-ubuntu22.04"
         GPU_SUPPORT=true
         COMPOSE_PROFILE="gpu"
     else

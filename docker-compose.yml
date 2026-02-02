@@ -8,7 +8,10 @@ services:
     hostname: webots_world
     profiles: ["cpu"]
     networks:
-      - webots_network
+      webots_network:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "9090:9090"  # Expose supervisor ROSBridge
     volumes:
       - ./ros2_ws:/ros2_ws
       - /dev/dri:/dev/dri
@@ -21,7 +24,7 @@ services:
     ipc: shareable
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    # restart: unless-stopped
     command:  #"ros2 launch webots_platform world_simulation.launch.py"
       bash -c "
       source /opt/ros/humble/setup.bash &&
@@ -32,7 +35,7 @@ services:
   # Webots simulation world - GPU version
   webots_world_gpu:
     image: webots_ws:humble
-    container_name: webots_world
+    container_name: webots_world_gpu
     hostname: webots_world
     profiles: ["gpu"]
     deploy:
@@ -43,7 +46,10 @@ services:
               count: all
               capabilities: [gpu]
     networks:
-      - webots_network
+      webots_network:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "9090:9090"  # Expose supervisor ROSBridge
     volumes:
       - ./ros2_ws:/ros2_ws
       - /tmp/.X11-unix:/tmp/.X11-unix
@@ -57,7 +63,7 @@ services:
     ipc: shareable
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    # restart: unless-stopped
     command: >
       bash -c "
       source /opt/ros/humble/setup.bash &&
@@ -72,18 +78,22 @@ services:
     hostname: robot_1
     profiles: ["cpu", "gpu"]
     networks:
-      - webots_network
+      webots_network:
+        ipv4_address: 172.20.0.20
+    ports:
+      - "9091:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
       - webots_ipc:/tmp/webots
-    environment: 
+    environment:
+      - ROS_DOMAIN_ID=1
       - ROBOT_NAME=ugv_01
       - ROBOT_X=0
       - ROBOT_Y=0
     ipc: shareable
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    # restart: unless-stopped
     command: >
       bash -c "
       sleep 10 &&
@@ -99,18 +109,22 @@ services:
     hostname: robot_2
     profiles: ["cpu", "gpu"]
     networks:
-      - webots_network
+      webots_network:
+        ipv4_address: 172.20.0.21
+    ports:
+      - "9092:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
       - webots_ipc:/tmp/webots
     environment:
+      - ROS_DOMAIN_ID=2
       - ROBOT_NAME=ugv_02
       - ROBOT_X=2
       - ROBOT_Y=0
     ipc: shareable
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    # restart: unless-stopped
     command: >
       bash -c "
       sleep 15 &&
@@ -127,18 +141,22 @@ services:
     hostname: robot_3
     profiles: ["cpu", "gpu"]
     networks:
-      - webots_network
+      webots_network:
+        ipv4_address: 172.20.0.23
+    ports:
+      - "9093:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
       - webots_ipc:/tmp/webots
     environment:
+      - ROS_DOMAIN_ID=3
       - ROBOT_NAME=ugv_03
       - ROBOT_X=-2
       - ROBOT_Y=0
     ipc: shareable
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    # restart: unless-stopped
     command: >
       bash -c "
       sleep 20 &&
@@ -151,9 +169,12 @@ services:
 
 networks:
   webots_network:
-    external: true
+    # external: true REMOVED to avoid ip conflict - it will accept the network name if exists but the problem is it will accept any IP
     driver: bridge
     name: webots_network
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
 
 volumes:
   webots_ipc:

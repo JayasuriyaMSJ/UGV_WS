@@ -647,6 +647,30 @@ CMakeFiles/webots_platform.dir/src/UGV_Driver.cpp.o: \
  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion__traits.hpp \
  /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/imu__type_support.hpp \
  /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/point_cloud2.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_cloud2__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_field__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_cloud2__builder.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_cloud2__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_field__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/point_cloud2__type_support.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/laser_scan.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/laser_scan__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/laser_scan__builder.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/laser_scan__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/laser_scan__type_support.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/image.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__builder.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__type_support.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/camera_info.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/camera_info__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/region_of_interest__struct.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/camera_info__builder.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/camera_info__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/region_of_interest__traits.hpp \
+ /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/camera_info__type_support.hpp \
  /opt/ros/humble/include/nav_msgs/nav_msgs/msg/odometry.hpp \
  /opt/ros/humble/include/nav_msgs/nav_msgs/msg/detail/odometry__struct.hpp \
  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp \
@@ -753,4 +777,9 @@ CMakeFiles/webots_platform.dir/src/UGV_Driver.cpp.o: \
  /opt/ros/humble/include/webots/c/webots/position_sensor.h \
  /opt/ros/humble/include/webots/c/webots/gyro.h \
  /opt/ros/humble/include/webots/c/webots/accelerometer.h \
+ /opt/ros/humble/include/webots/c/webots/lidar.h \
+ /opt/ros/humble/include/webots/c/webots/lidar_point.h \
+ /opt/ros/humble/include/webots/c/webots/camera.h \
+ /opt/ros/humble/include/webots/c/webots/camera_recognition_object.h \
+ /opt/ros/humble/include/webots/c/webots/range_finder.h \
  /opt/ros/humble/include/pluginlib/pluginlib/class_list_macros.hpp

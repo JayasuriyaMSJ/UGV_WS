@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from ament_index_python.packages import get_package_share_directory
 from webots_ros2_driver.webots_launcher import WebotsLauncher
 from webots_ros2_driver.webots_controller import WebotsController
+from launch_ros.actions import Node
 from webots_ros2_driver.utils import controller_url_prefix
 from webots_ros2_driver.webots_launcher import Ros2SupervisorLauncher
 
@@ -24,9 +25,22 @@ def generate_launch_description():
         respawn=True
     )
 
+    # --- ROSBridge for cross-domain communication ---
+    rosbridge = Node(
+        package='rosbridge_server',
+        executable='rosbridge_websocket',
+        name='supervisor_rosbridge',
+        parameters=[{
+            'port': 9090,
+            'use_sim_time': True
+        }],
+        output='screen'
+    )
+
     return LaunchDescription([
         webots,
         ros2_supervisor_controller,
+        rosbridge,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(
                 target_action=webots,

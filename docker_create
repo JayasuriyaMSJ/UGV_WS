@@ -26,6 +26,14 @@ PROFILE=$(cat .docker_profile)
 echo "Configuration: $PROFILE mode"
 echo ""
 
+# Remove docker network if it exists (gracefully)
+if docker network inspect webots_network >/dev/null 2>&1; then
+    echo "Removing existing Docker network: webots_network"
+    docker network rm webots_network
+else
+    echo "Docker network webots_network does not exist, skipping"
+fi
+
 # Enable X11 forwarding
 xhost +local:docker 2>/dev/null || echo "⚠ Warning: Could not set xhost"
 

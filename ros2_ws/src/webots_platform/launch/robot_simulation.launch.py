@@ -17,15 +17,25 @@ def launch_setup(context, *args, **kwargs):
     x = LaunchConfiguration('x').perform(context)
     y = LaunchConfiguration('y').perform(context)
 
-    robot_spwanner = Node(
-        package= package_name,
+    # Spawn robot via ROSBridge (works across domains!)
+    robot_spawner = Node(
+        package=package_name,
         executable="spawn_proto_robot.py",
-        output = 'screen',
+        output='screen',
         arguments=[
             robot_name,
             x,
-            y
-        ]
+            y,
+            '--rosbridge'  # Enable ROSBridge mode
+        ],
+        parameters=[{
+            'use_sim_time': True
+        }],
+        # Pass supervisor host via environment
+        additional_env={
+            'USE_ROSBRIDGE': 'true',
+            'SUPERVISOR_HOST': '172.20.0.10'
+        }
     )
 
     # --- Webots controller (C++ plugin + sensors) ---
@@ -53,6 +63,16 @@ def launch_setup(context, *args, **kwargs):
         }]
     )
 
+    # Add to robot_simulation.launch.py
+    rosbridge = Node(
+        package='rosbridge_server',
+        executable='rosbridge_websocket',
+        parameters=[{
+            'port': 9090,
+            'use_sim_time': True
+        }]
+    )
+
     # --- RViz ---
     rviz = Node(
         package='rviz2',
@@ -63,9 +83,22 @@ def launch_setup(context, *args, **kwargs):
     )
 
     return [
+        # Start rosbridge first
         TimerAction(
             period=5.0,
-            actions=[robot_spwanner, robot_state_publisher, ugv_controller, ] # rviz
+            actions=[rosbridge]
+        ),
+
+        # Spawn robot via ROSBridge to supervisor
+        TimerAction(
+            period=8.0,
+            actions=[robot_spawner]
+        ),
+        
+        # Start controller and state publisher
+        TimerAction(
+            period=12.0,
+            actions=[robot_state_publisher, ugv_controller]
         )
     ]
 

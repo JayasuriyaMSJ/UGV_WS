@@ -125,11 +125,13 @@ RUN pip3 install --no-cache-dir \
   matplotlib \
   opencv-python
 
+RUN pip3 install roslibpy
+
 # ROS BRIDGE
 RUN apt-get update && apt-get install -y \
-    ros-humble-ament-cmake-mypy \
-    ros-humble-rosbridge-suite \
-    && rm -rf /var/lib/apt/lists/*
+  ros-humble-ament-cmake-mypy \
+  ros-humble-rosbridge-suite \
+  && rm -rf /var/lib/apt/lists/*
 
 # Initialize rosdep
 RUN rosdep init && rosdep update
