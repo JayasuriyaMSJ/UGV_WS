@@ -1,0 +1,6 @@
+Invoking command in '/ros2_ws/build/webots_platform': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/webots_platform -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/webots_platform
+Invoked command in '/ros2_ws/build/webots_platform' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/webots_platform -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/webots_platform
+Invoking command in '/ros2_ws/build/webots_platform': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/webots_platform -- -j12 -l12
+Invoked command in '/ros2_ws/build/webots_platform' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/webots_platform -- -j12 -l12
+Invoking command in '/ros2_ws/build/webots_platform': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/webots_platform
+Invoked command in '/ros2_ws/build/webots_platform' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/webots_platform

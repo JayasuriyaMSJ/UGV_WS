@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/ros/humble/include/**",
+                "/opt/ros/humble/include/rclcpp",
+                "/opt/ros/humble/include/geometry_msgs",
+                "${workspaceFolder}/install/**",
+                "${workspaceFolder}/build/**",
+                "/usr/local/webots/include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

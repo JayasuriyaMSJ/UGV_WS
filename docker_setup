@@ -1,0 +1,146 @@
+#!/bin/bash
+
+# Webots ROS2 Setup Script
+# This script sets up the Docker environment for Webots simulation
+# Works with both CPU and GPU systems with automatic detection
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "=========================================="
+echo "  Webots ROS2 Docker Setup"
+echo "=========================================="
+echo ""
+
+# Check if Docker is installed
+if ! command -v docker &> /dev/null; then
+    echo "Error: Docker is not installed!"
+    echo "Please install Docker first: https://docs.docker.com/get-docker/"
+    exit 1
+fi
+
+# Check if Docker Compose is installed
+if ! command -v docker compose &> /dev/null; then
+    echo "Error: Docker Compose is not installed!"
+    echo "Please install Docker Compose: https://docs.docker.com/compose/install/"
+    exit 1
+fi
+
+echo "✓ Docker found: $(docker --version)"
+echo "✓ Docker Compose found: $(docker compose version)"
+echo ""
+
+# Check if ros2_ws directory exists
+if [ ! -d "ros2_ws" ]; then
+    echo "Warning: ros2_ws directory not found!"
+    echo "Creating ros2_ws/src directory..."
+    mkdir -p ros2_ws/src
+    echo "✓ ros2_ws directory created"
+    echo "  Please copy your ROS2 packages to ./ros2_ws/src"
+else
+    echo "✓ ros2_ws directory found"
+fi
+
+# Check if Dockerfile exists
+if [ ! -f "Dockerfile" ]; then
+    echo "Error: Dockerfile not found!"
+    echo "Please ensure Dockerfile is in the same directory as this script"
+    exit 1
+fi
+
+echo ""
+echo "=========================================="
+echo "  Detecting GPU Support"
+echo "=========================================="
+echo ""
+
+BASE_IMAGE="ubuntu:22.04"
+GPU_SUPPORT=false
+COMPOSE_PROFILE="cpu"
+
+# Check for NVIDIA GPU and Docker GPU support
+if command -v nvidia-smi &> /dev/null; then
+    echo "✓ NVIDIA GPU detected"
+    nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader 2>/dev/null || true
+    
+    # Check if nvidia-container-toolkit is installed
+    if docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi &> /dev/null; then
+        echo "✓ NVIDIA Container Toolkit detected"
+        echo "✓ GPU support will be enabled"
+        BASE_IMAGE="nvidia/cuda:11.8.0-runtime-ubuntu22.04"
+        GPU_SUPPORT=true
+        COMPOSE_PROFILE="gpu"
+    else
+        echo "⚠ Warning: NVIDIA GPU found but nvidia-container-toolkit not working"
+        echo "  Install it with: sudo apt-get install -y nvidia-container-toolkit"
+        echo "  Falling back to CPU mode"
+        COMPOSE_PROFILE="cpu"
+    fi
+else
+    echo "ℹ No NVIDIA GPU detected"
+    echo "  CPU mode will be used"
+fi
+
+echo ""
+echo "Configuration:"
+echo "  - Base image: $BASE_IMAGE"
+echo "  - Mode: $COMPOSE_PROFILE"
+echo ""
+
+# Save the profile to a file for docker_create to use
+echo "$COMPOSE_PROFILE" > .docker_profile
+
+echo ""
+echo "=========================================="
+echo "  Building Docker Image"
+echo "=========================================="
+echo ""
+
+# Build Docker image
+echo "Building webots_ws:humble image..."
+echo "This may take 10-15 minutes on first run..."
+echo ""
+
+docker build \
+  --build-arg BASE_IMAGE=$BASE_IMAGE \
+  -t webots_ws:humble \
+  . || {
+    echo ""
+    echo "Failed to build Docker image"
+    exit 1
+  }
+
+echo ""
+echo "✓ Docker image built successfully!"
+
+# Create Docker network if it doesn't exist
+echo ""
+echo "Creating Docker network..."
+docker network create webots_network 2>/dev/null && echo "✓ Network created" || echo "ℹ Network already exists"
+
+# Enable X11 forwarding for GUI
+echo ""
+echo "Setting up X11 forwarding..."
+xhost +local:docker 2>/dev/null && echo "✓ X11 forwarding enabled" || echo "⚠ Could not set xhost (GUI may not work)"
+
+echo ""
+echo "=========================================="
+echo "  Setup Complete!"
+echo "=========================================="
+echo ""
+echo "System Configuration:"
+echo "  ✓ Mode: $COMPOSE_PROFILE"
+if [ "$GPU_SUPPORT" = true ]; then
+    echo "  ✓ GPU acceleration: ENABLED"
+else
+    echo "  ℹ GPU acceleration: DISABLED (CPU fallback)"
+fi
+echo ""
+echo "Next steps:"
+echo "  1. Ensure your ROS2 workspace is in ./ros2_ws/src"
+echo "  2. Build your ROS2 packages: ./docker_build"
+echo "  3. Start simulation: ./docker_create"
+echo "  4. Stop simulation: ./docker_destroy"
+echo ""

@@ -1,0 +1,76 @@
+[0.014s] Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/autonomous_navigation -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/autonomous_navigation
+[0.089s] -- The C compiler identification is GNU 11.4.0
+[0.150s] -- The CXX compiler identification is GNU 11.4.0
+[0.160s] -- Detecting C compiler ABI info
+[0.233s] -- Detecting C compiler ABI info - done
+[0.248s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.248s] -- Detecting C compile features
+[0.249s] -- Detecting C compile features - done
+[0.254s] -- Detecting CXX compiler ABI info
+[0.334s] -- Detecting CXX compiler ABI info - done
+[0.345s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.345s] -- Detecting CXX compile features
+[0.346s] -- Detecting CXX compile features - done
+[0.352s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.530s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.616s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.652s] -- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)
+[0.714s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.722s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.735s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.753s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.778s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.843s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.847s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.961s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.998s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.056s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.068s] -- Looking for pthread.h
+[1.151s] -- Looking for pthread.h - found
+[1.152s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.219s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.220s] -- Found Threads: TRUE  
+[1.283s] -- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+[1.285s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.297s] -- Found webots_ros2_driver: 2025.0.0 (/opt/ros/humble/share/webots_ros2_driver/cmake)
+[1.329s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.330s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.330s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.479s] -- Found pluginlib: 5.1.3 (/opt/ros/humble/share/pluginlib/cmake)
+[1.483s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.502s] -- Found rtabmap_ros: 0.22.1 (/opt/ros/humble/share/rtabmap_ros/cmake)
+[1.504s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.611s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.612s] -- Added test 'lint_cmake' to check CMake code style
+[1.612s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.613s] -- Added test 'xmllint' to check XML markup files
+[1.614s] -- Configuring done
+[1.617s] -- Generating done
+[1.619s] -- Build files have been written to: /ros2_ws/build/autonomous_navigation
+[1.628s] Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/autonomous_navigation -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/autonomous_navigation
+[1.629s] Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/autonomous_navigation -- -j12 -l12
+[1.670s] Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/autonomous_navigation -- -j12 -l12
+[1.683s] Invoking command in '/ros2_ws/build/autonomous_navigation': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/autonomous_navigation
+[1.693s] -- Install configuration: "Release"
+[1.695s] -- Execute custom install script
+[1.696s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_localization.launch.py
+[1.704s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping.launch.py
+[1.714s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping_bkpup
+[1.723s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/mapping_rqt.png
+[1.734s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/nav2.yaml
+[1.746s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/package_run_dependencies/autonomous_navigation
+[1.753s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/parent_prefix_path/autonomous_navigation
+[1.764s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/ament_prefix_path.sh
+[1.772s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/ament_prefix_path.dsv
+[1.785s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/path.sh
+[1.799s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/path.dsv
+[1.806s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.bash
+[1.815s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.sh
+[1.826s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.zsh
+[1.836s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.dsv
+[1.847s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/package.dsv
+[1.857s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/packages/autonomous_navigation
+[1.864s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/cmake/autonomous_navigationConfig.cmake
+[1.874s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/cmake/autonomous_navigationConfig-version.cmake
+[1.885s] -- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/package.xml
+[1.898s] Invoked command in '/ros2_ws/build/autonomous_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/autonomous_navigation

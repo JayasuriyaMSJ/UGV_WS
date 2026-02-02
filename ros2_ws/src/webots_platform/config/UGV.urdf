@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<robot name="/home/suriya/ros2_ws/src/webots_platform/config/UGV.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+  </link>
+  <joint name="right_rear_motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_rear_wheel"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="20"/>
+    <origin xyz="-0.2 -0.3 -0.1" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="right_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_rear_motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_rear_wheel"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="20"/>
+    <origin xyz="-0.2 0.3 -0.1" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="left_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_front_motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="20"/>
+    <origin xyz="0.2 -0.3 -0.1" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="right_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_front_motor" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="20"/>
+    <origin xyz="0.2 0.3 -0.1" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="left_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="gps">
+  </link>
+  <joint name="base_link_gps_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gps"/>
+    <origin xyz="0 0 0.75" rpy="0 0 0"/>
+  </joint>
+  <link name="gps_antenna">
+  </link>
+  <joint name="gps_gps_antenna_joint" type="fixed">
+    <parent link="gps"/>
+    <child link="gps_antenna"/>
+    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  </joint>
+  <link name="accelerometer">
+  </link>
+  <joint name="base_link_accelerometer_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="accelerometer"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="gyro">
+  </link>
+  <joint name="base_link_gyro_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gyro"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="imu">
+  </link>
+  <joint name="base_link_imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu"/>
+    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+  </joint>
+  <link name="camera_mount">
+  </link>
+  <joint name="base_link_camera_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_mount"/>
+    <origin xyz="0.32 0 0.05" rpy="0 0 0"/>
+  </joint>
+  <link name="camera_depth">
+  </link>
+  <joint name="camera_mount_camera_depth_joint" type="fixed">
+    <parent link="camera_mount"/>
+    <child link="camera_depth"/>
+    <origin xyz="0.025 0.03 0" rpy="0 0 0"/>
+  </joint>
+  <link name="camera_rgb">
+  </link>
+  <joint name="camera_mount_camera_rgb_joint" type="fixed">
+    <parent link="camera_mount"/>
+    <child link="camera_rgb"/>
+    <origin xyz="0.025 -0.03 0" rpy="-1.570796 0 -1.570796"/>
+  </joint>
+  <link name="lidar_3d_platform">
+  </link>
+  <joint name="base_link_lidar_3d_platform_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_3d_platform"/>
+    <origin xyz="0 0 0.65" rpy="0 0 0"/>
+  </joint>
+  <link name="lidar_3d">
+  </link>
+  <joint name="lidar_3d_platform_lidar_3d_joint" type="fixed">
+    <parent link="lidar_3d_platform"/>
+    <child link="lidar_3d"/>
+    <origin xyz="0 0 0.06" rpy="0 0 0"/>
+  </joint>
+  <link name="lidar_2d_platform">
+  </link>
+  <joint name="base_link_lidar_2d_platform_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_2d_platform"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </joint>
+  <link name="lidar_2d">
+  </link>
+  <joint name="lidar_2d_platform_lidar_2d_joint" type="fixed">
+    <parent link="lidar_2d_platform"/>
+    <child link="lidar_2d"/>
+    <origin xyz="0 0 0.06" rpy="0 0 0"/>
+  </joint>
+  <link name="lidar_tower">
+  </link>
+  <joint name="base_link_lidar_tower_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_tower"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+  </joint>
+</robot>

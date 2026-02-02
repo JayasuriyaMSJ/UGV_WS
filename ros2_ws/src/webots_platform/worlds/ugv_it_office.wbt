@@ -1,0 +1,659 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Oak.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Pine.proto"
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/SimpleBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadIntersection.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/CeilingLight.proto"
+
+WorldInfo {
+  info [
+    "IT Office Environment"
+  ]
+  basicTimeStep 10
+  coordinateSystem "ENU"
+}
+
+Viewpoint {
+  orientation -0.2 0.1 0.9 1.2
+  position -15 -15 15
+  follow "ugv_robot"
+}
+
+TexturedBackground {
+}
+
+TexturedBackgroundLight {
+}
+
+Floor {
+  translation 15 7 0
+  size 200 200
+  tileSize 2 2
+  appearance PBRAppearance {
+    baseColor 0.7 0.7 0.7
+    roughness 0.5
+    metalness 0
+  }
+}
+
+DEF ugv_robot Robot {
+  translation 0 0 0.1
+  rotation 0 0 1 0
+  name "ugv_robot"
+  controller "<extern>"
+  supervisor FALSE
+  children [
+    InertialUnit {
+      name "imu"
+    }
+    # Body
+    DEF chassis Solid {
+      name "chassis"
+      children [
+        DEF chassis_shape Shape {
+          appearance PBRAppearance {
+            baseColor 0.6 0.2 0.2
+            metalness 0.5
+            roughness 0.3
+          }
+          geometry Box {
+            size 0.5 0.3 0.15
+          }
+        }
+      ]
+    }
+    # Front Left Wheel
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.2 0.2 0
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fl_joint"
+        }
+        PositionSensor {
+          name "wheel_fl_sensor"
+        }
+      ]
+      endPoint Solid {
+        name "wheel_fl"
+        translation 0.2 0.2 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.1
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.05
+          radius 0.1
+        }
+        physics Physics {}
+      }
+    }
+    # Front Right Wheel
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.2 -0.2 0
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fr_joint"
+        }
+        PositionSensor {
+          name "wheel_fr_sensor"
+        }
+      ]
+      endPoint Solid {
+        name "wheel_fr"
+        translation 0.2 -0.2 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.1
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.05
+          radius 0.1
+        }
+        physics Physics {}
+      }
+    }
+    # Rear Left Wheel
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.2 0.2 0
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rl_joint"
+        }
+        PositionSensor {
+          name "wheel_rl_sensor"
+        }
+      ]
+      endPoint Solid {
+        name "wheel_rl"
+        translation -0.2 0.2 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.1
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.05
+          radius 0.1
+        }
+        physics Physics {}
+      }
+    }
+    # Rear Right Wheel
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.2 -0.2 0
+        axis 0 1 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rr_joint"
+        }
+        PositionSensor {
+          name "wheel_rr_sensor"
+        }
+      ]
+      endPoint Solid {
+        name "wheel_rr"
+        translation -0.2 -0.2 0
+        rotation 1 0 0 1.5708
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.1 0.1 0.1
+              roughness 0.1
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        boundingObject Cylinder {
+          height 0.05
+          radius 0.1
+        }
+        physics Physics {}
+      }
+    }
+    # 3D Lidar
+    Lidar {
+      translation 0 0 0.4
+      rotation 0 0 1 3.14159
+      name "sick_3d_lidar"
+      horizontalResolution 360
+      fieldOfView 6.28
+      verticalFieldOfView 1.57
+      numberOfLayers 16
+      maxRange 50
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.2 0.2 0.8
+          }
+          geometry Cylinder {
+            height 0.05
+            radius 0.04
+          }
+        }
+      ]
+    }
+    # 2D Lidar
+    Lidar {
+      translation 0 0 0.35
+      rotation 0 0 1 0
+      name "sick_2d_lidar"
+      horizontalResolution 360
+      fieldOfView 6.28
+      verticalFieldOfView 0.1
+      numberOfLayers 1
+      maxRange 30
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1.0 0.5 0.0
+          }
+          geometry Cylinder {
+            height 0.06
+            radius 0.03
+          }
+        }
+      ]
+    }
+    # GPS
+    GPS {
+      translation 0 0 0.3
+      name "gps"
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1.0 0.0 1.0
+          }
+          geometry Box {
+            size 0.05 0.05 0.02
+          }
+        }
+      ]
+    }
+    # Camera
+    Camera {
+      translation 0.26 0 0.06
+      name "realsense_camera"
+      fieldOfView 1.5
+      width 640
+      height 480
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.1 0.8 0.1
+          }
+          geometry Box {
+            size 0.02 0.05 0.02
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE chassis_shape
+  physics Physics {
+  }
+}
+
+# --- OUTDOOR ENVIRONMENT ---
+
+# Roads (Pavement)
+StraightRoadSegment {
+  translation 0 10 0.1
+  rotation 0 0 1 1.5708
+  name "road_north"
+  width 8
+  length 97
+  numberOfLanes 2
+}
+StraightRoadSegment {
+  translation 15 0 0.1
+  name "road_east"
+  width 8
+  length 100
+  numberOfLanes 2
+}
+
+# Fence Perimeter (removed due to EXTERNPROTO download errors)
+
+# Additional Outdoor Buildings (Denser Environment)
+SimpleBuilding {
+  translation 60 60 0
+  name "building_tower_1"
+  floorHeight 4
+  floorNumber 10
+  corners [0 0, 10 0, 10 10, 0 10]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -60 60 0
+  name "building_tower_2"
+  floorHeight 4
+  floorNumber 12
+  corners [0 0, 15 0, 15 15, 0 15]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation 6 80 0
+  name "building_tower_3"
+  floorHeight 4
+  floorNumber 15
+  corners [0 0, 20 0, 20 20, 0 20]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -53.93 -58.4 0
+  name "building_tower_4"
+  floorHeight 4
+  floorNumber 15
+  corners [0 0, 20 0, 20 20, 0 20]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation 68.18 -58.39 0
+  name "building_tower_5"
+  floorHeight 4
+  floorNumber 15
+  corners [0 0, 20 0, 20 20, 0 20]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -32.9 -35.3 0
+  name "building_extra_1"
+  floorHeight 3
+  floorNumber 4
+  corners [0 0, 20 0, 20 10, 0 10]
+}
+SimpleBuilding {
+  translation 40 -60 0
+  name "building_extra_2"
+  floorHeight 3
+  floorNumber 5
+  corners [0 0, 12 0, 12 12, 0 12]
+}
+SimpleBuilding {
+  translation 80 -20 0
+  name "building_extra_3"
+  floorHeight 3
+  floorNumber 3
+  corners [0 0, 15 0, 15 8, 0 8]
+}
+SimpleBuilding {
+  translation -36.3 10 0
+  name "building_extra_4"
+  floorHeight 5
+  floorNumber 2
+  corners [0 0, 10 0, 10 20, 0 20]
+}
+SimpleBuilding {
+  translation 20 -80 0
+  name "building_extra_5"
+  floorHeight 4
+  floorNumber 6
+  corners [0 0, 15 0, 15 15, 0 15]
+}
+SimpleBuilding {
+  translation -52.9 -11.89 0.000180814
+  name "building_extra_6"
+  floorHeight 5
+  floorNumber 2
+  corners [0 0, 10 0, 10 20, 0 20]
+}
+SimpleBuilding {
+  translation 35.2 28.8506 -0.0396394
+  name "building_extra_7"
+  floorHeight 5
+  floorNumber 2
+  corners [0 0, 10 0, 10 20, 0 20]
+}
+
+# Trees
+Oak {name "oak1"
+  translation 20 20 0
+}
+Oak {name "oak2"
+  translation -20 -20 0
+}
+Oak {name "oak3"
+  translation 50 50 0
+}
+Pine {name "pine1"
+  translation 5.83 19.67 0
+}
+Pine {name "pine2"
+  translation 5.83 29.67 0
+}
+Pine {name "pine3"
+  translation 5.83 39.67 0
+}
+Pine {name "pine4"
+  translation 5.83 49.67 0
+}
+Pine {name "pine5"
+  translation 5.83 59.67 0
+}
+Pine {name "pine6"
+  translation -8.5 20.8 0
+}
+Pine {name "pine7"
+  translation -8.5 30.8 0
+}
+Pine {name "pine8"
+  translation -8.5 40.8 0
+}
+Pine {name "pine9"
+  translation -8.5 50.8 0
+}
+Pine {name "pine10"
+  translation -8.5 60.8 0
+}
+Pine {name "pine11"
+  translation -8.5 70.8 0
+}
+
+Pine {name "pine12"
+  translation -50 50 0
+}
+Pine {name "pine13"
+  translation 22.8 -7.1 0
+}
+Pine {name "pine14"
+  translation 30 -7.1 0
+}
+Pine {name "pine15"
+  translation 40 -7.1 0
+}
+Pine {name "pine16"
+  translation 50 -7.1 0
+}
+Pine {name "pine17"
+  translation 60 -7.1 0
+}
+Pine {name "pine18"
+  translation 70 -7.1 0
+}
+Pine {name "pine19"
+  translation 80 -7.1 0
+}
+
+Pine {name "pine20"
+  translation 14.1 -50 0
+}
+Pine {name "pine21"
+  translation 45 -50 0
+}
+Pine {name "pine22"
+  translation 30 6.5 0
+}
+Pine {name "pine23"
+  translation 20 6.5 0
+}
+Pine {name "pine24"
+  translation 40 6.5 0
+}
+Pine {name "pine25"
+  translation 90 6.5 0
+}
+
+Pine {name "pine26"
+  translation 50 6.5 0
+}
+Pine {name "pine27"
+  translation 60 6.5 0
+}
+Pine {name "pine28"
+  translation 80 6.5 0
+}
+Pine {name "pine29"
+  translation 70 6.5 0
+}
+Pine {name "pine30"
+  translation 30 -40 0
+}
+Pine {name "pine31"
+  translation -30 60 0
+}
+
+
+# --- INDOOR OFFICE STRUCTURE (4 Rooms) ---
+# Walls are 0.2m thick. 
+# Layout: Central Corridor, 2 Rooms Left, 2 Rooms Right.
+
+# External Shell (30m x 20m)
+Wall {
+  name "wall_shell_south"
+  translation 0 -10 0
+  size 30 0.2 3
+}
+Wall {
+  name "wall_shell_north_1"
+  translation -8.56 10 0
+  size 13 0.2 3
+}
+Wall {
+  name "wall_shell_north_2"
+  translation 8.56 10 0
+  size 13 0.2 3
+}
+
+# West Wall (Split for Gate)
+# Total length 20m. Gap required.
+# Top segment (0 to 10) -> trans 6. Size 8 (leaves 2m gap from center)
+Wall {
+  name "wall_shell_west_1"
+  translation -15 6 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+Wall {
+  name "wall_shell_west_2"
+  translation -15 -6 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+
+# East Wall (Split for Gate)
+Wall {
+  name "wall_shell_east_1"
+  translation 15 6 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+Wall {
+  name "wall_shell_east_2"
+  translation 15 -6 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+
+# Room Dividers
+# Central Wall (West-East) dividing rooms - WITH GAP FOR CORRIDOR
+Wall {
+  name "wall_div_center_left"
+  translation -10 0 0
+  size 10 0.2 3
+}
+Wall {
+  name "wall_div_center_right"
+  translation 10 0 0
+  size 10 0.2 3
+}
+# (Gap in center -5 to 5 is 10m open atrium)
+
+# Divider Wall Left (North-South)
+Wall {
+  name "wall_div_col_1"
+  translation -5 -5.95 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+Wall {
+  name "wall_div_col_4"
+  translation -5 6.07 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+# Divider Wall Right (North-South)
+Wall {
+  name "wall_div_col_2"
+  translation 5 5.87 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+Wall {
+  name "wall_div_col_3"
+  translation 5 -5.92 0
+  rotation 0 0 1 1.5708
+  size 8 0.2 3
+}
+
+
+# GATES / DOORS (Open Spaces in walls would require split walls, simplified here by leaving gaps or implicit open doors)
+# Adding Open DoorFrames to indicate entrances.
+# (Not adding complex Door PROTOs to avoid collisions/download errors, using gaps if manual, 
+# but currently walls are solid blocks. To make "two in and out gate/door which needs to be open",
+# we should actually split the shell wall or just assume the robot spawns inside).
+
+# LIGHTING (Indoor)
+PointLight {
+  location -10 5 2.5
+  radius 10
+  intensity 0.5
+  attenuation 0 0 1
+  castShadows TRUE
+}
+PointLight {
+  location 10 5 2.5
+  radius 10
+  intensity 0.5
+  attenuation 0 0 1
+}
+PointLight {
+  location -10 -5 2.5
+  radius 10
+  intensity 0.5
+  attenuation 0 0 1
+}
+PointLight {
+  location 10 -5 2.5
+  radius 10
+  intensity 0.5
+  attenuation 0 0 1
+}
+CeilingLight {
+  translation 0 0 2.9
+  pointLightIntensity 0.2
+}
+
+
+# FURNITURE (removed due to EXTERNPROTO download errors)
+# Tables and chairs removed - can be added back with local PROTO files if needed
+
+
+

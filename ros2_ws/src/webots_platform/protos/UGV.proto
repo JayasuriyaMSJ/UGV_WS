@@ -1,0 +1,359 @@
+#VRML_SIM R2025a utf8
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/velodyne/protos/VelodyneVLP-16.proto"
+
+PROTO UGV [
+  field SFVec3f    translation  0 0 0.193
+  field SFRotation rotation     0 0 1 0
+  field SFString   name         "UGV"
+  field SFString   controller   "<extern>"
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF CHASSIS Shape {
+        appearance PBRAppearance {
+          baseColor 0.3 0.3 0.3
+          roughness 0.5
+          metalness 0.5
+        }
+        geometry Box {
+          size 0.6 0.5 0.2
+        }
+      }
+      Solid {
+        translation 0 0 0.25
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.2 0.2
+              roughness 0.3
+              metalness 0.7
+            }
+            geometry Box {
+              size 0.1 0.1 0.4
+            }
+          }
+        ]
+        name "lidar_tower"
+      }
+      Solid {
+        translation 0 0 0.46
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.15 0.15 0.15
+              metalness 0.8
+            }
+            geometry Cylinder {
+              height 0.03
+              radius 0.08
+            }
+          }
+          Lidar {
+            translation 0 0 0.04
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.2 0.2 0.8
+                }
+                geometry Cylinder {
+                  height 0.05
+                  radius 0.04
+                }
+              }
+            ]
+            name "sick_2d_lidar"
+            horizontalResolution 720
+            fieldOfView 4.712389
+            numberOfLayers 1
+            minRange 0.05
+            maxRange 30
+          }
+        ]
+        name "lidar_2d_platform"
+      }
+      Solid {
+        translation 0 0 0.54
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.15 0.15 0.15
+              metalness 0.8
+            }
+            geometry DEF PLATFORM_GEOMETRY Cylinder {
+              height 0.03
+              radius 0.08
+            }
+          }
+          VelodyneVLP-16 {
+            translation 0 0 0.05
+            name "velodyne"
+          }
+        ]
+        name "lidar_3d_platform"
+        boundingObject USE PLATFORM_GEOMETRY
+        physics Physics {
+          density -1
+          mass 0.5
+        }
+      }
+      Solid {
+        translation 0.32 0 0.05
+        rotation 0 1 0 0
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.25 0.25 0.25
+              roughness 0.4
+              metalness 0.6
+            }
+            geometry Box {
+              size 0.04 0.12 0.04
+            }
+          }
+          Camera {
+            translation 0.025 -0.03 0
+            rotation 0 1 0 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0.1 0.15
+                  roughness 0.1
+                  metalness 0.9
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.015
+                }
+              }
+            ]
+            name "camera_rgb"
+            fieldOfView 1.211
+            width 640
+            height 480
+            near 0.3
+            far 10
+          }
+          RangeFinder {
+            translation 0.025 0.03 0
+            rotation 0 1 0 0
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.15 0.15 0.2
+                  roughness 0.1
+                  metalness 0.9
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.015
+                }
+              }
+            ]
+            name "camera_depth"
+            fieldOfView 1.211
+            width 640
+            height 480
+            minRange 0.3
+            maxRange 10
+          }
+        ]
+        name "camera_mount"
+      }
+      InertialUnit {
+        translation 0 0 0.12
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.8 0.2 0.2
+              metalness 0.5
+            }
+            geometry Box {
+              size 0.05 0.05 0.02
+            }
+          }
+        ]
+        name "imu"
+      }
+      Gyro {
+        name "gyro"
+      }
+      Accelerometer {
+        name "accelerometer"
+      }
+      GPS {
+        translation 0 0 0.64
+        children [
+          Shape {
+            appearance PBRAppearance {
+              baseColor 0.2 0.8 0.2
+              metalness 0.3
+            }
+            geometry Box {
+              size 0.06 0.06 0.03
+            }
+          }
+          Solid {
+            translation 0 0 0.02
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  metalness 0.8
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.04
+                }
+              }
+            ]
+            name "gps_antenna"
+          }
+        ]
+        accuracy 0.01
+        speedNoise 0.01
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 6.92257196193603e-11
+          axis 0 1 0
+          anchor 0.2 0.3 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "left_front_motor"
+            maxVelocity 20
+          }
+          PositionSensor {
+            name "left_front_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.2 0.3 -0.1
+          rotation 1 1.7306366334890186e-10 -1.7306429904840077e-10 1.5708
+          children [
+            DEF WHEEL_SHAPE Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0.1 0.1
+                roughness 1
+              }
+              geometry Cylinder {
+                height 0.08
+                radius 0.1
+              }
+            }
+          ]
+          name "left_front_wheel"
+          contactMaterial "wheel_material"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 2
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 6.922497828632965e-11
+          axis 0 1 0
+          anchor 0.2 -0.3 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "right_front_motor"
+            maxVelocity 20
+          }
+          PositionSensor {
+            name "right_front_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.2 -0.3 -0.1
+          rotation 1 1.730618100231329e-10 -1.7306244571582414e-10 1.5708
+          children [
+            USE WHEEL_SHAPE
+          ]
+          name "right_front_wheel"
+          contactMaterial "wheel_material"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 2
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 6.922486171470716e-11
+          axis 0 1 0
+          anchor -0.2 0.3 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "left_rear_motor"
+            maxVelocity 20
+          }
+          PositionSensor {
+            name "left_rear_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.2 0.3 -0.1
+          rotation 1 1.730615185951471e-10 -1.7306215428676794e-10 1.5708
+          children [
+            USE WHEEL_SHAPE
+          ]
+          name "left_rear_wheel"
+          contactMaterial "wheel_material"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 2
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          position 6.922569724563408e-11
+          axis 0 1 0
+          anchor -0.2 -0.3 -0.1
+        }
+        device [
+          RotationalMotor {
+            name "right_rear_motor"
+            maxVelocity 20
+          }
+          PositionSensor {
+            name "right_rear_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.2 -0.3 -0.1
+          rotation 1 1.7306360741479172e-10 -1.730642431140852e-10 1.5708
+          children [
+            USE WHEEL_SHAPE
+          ]
+          name "right_rear_wheel"
+          contactMaterial "wheel_material"
+          boundingObject USE WHEEL_SHAPE
+          physics Physics {
+            density -1
+            mass 2
+          }
+        }
+      }
+    ]
+    name IS name
+    contactMaterial "chassis_material"
+    boundingObject Box {
+      size 0.6 0.5 0.2
+    }
+    physics Physics {
+      density -1
+      mass 25
+    }
+    supervisor FALSE
+    controller IS controller
+  }
+}

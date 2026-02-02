@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+<robot name="ugv_robot">
+  <!-- Base Footprint (Root Link) -->
+  <link name="base_footprint"/>
+
+  <!-- Joint connecting Base Footprint to Base Link -->
+  <joint name="base_link_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- IMU Link -->
+  <link name="imu_link"/>
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.3 0.15"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.6 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint connecting IMU to Base Link -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  </joint>
+
+  <!-- 3D Lidar (SICK TiM series) - Top mounted at 0.4m -->
+  <link name="sick_3d_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.05"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.2 0.2 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="lidar_3d_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_3d_link"/>
+    <origin xyz="0 0 0.4" rpy="0 0 0"/>
+  </joint>
+
+  <!-- 2D Lidar (Hokuyo style) - Mounted at 0.35m -->
+  <link name="sick_2d_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.06"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1.0 0.5 0.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="lidar_2d_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_2d_link"/>
+    <origin xyz="0 0 0.35" rpy="0 0 0"/>
+  </joint>
+
+  <!-- GPS Antenna - Mounted at 0.3m -->
+  <link name="gps_link">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.02"/>
+      </geometry>
+      <material name="magenta">
+        <color rgba="1.0 0.0 1.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="gps_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gps_link"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Camera -->
+  <link name="realsense_link">
+     <visual>
+      <geometry>
+        <box size="0.02 0.05 0.02"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0.1 0.8 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+  
+  <joint name="camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="realsense_link"/>
+    <origin xyz="0.26 0 0.06" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Wheels (Visual only, Webots handles physics) -->
+  <link name="wheel_fl_Link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="wheel_fl_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_fl_Link"/>
+    <origin xyz="0.2 0.2 -0.1" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  
+  <link name="wheel_fr_Link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="wheel_fr_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_fr_Link"/>
+    <origin xyz="0.2 -0.2 -0.1" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="wheel_rl_Link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="wheel_rl_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_rl_Link"/>
+    <origin xyz="-0.2 0.2 -0.1" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="wheel_rr_Link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="wheel_rr_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_rr_Link"/>
+    <origin xyz="-0.2 -0.2 -0.1" rpy="-1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  
+
+
+</robot>
+

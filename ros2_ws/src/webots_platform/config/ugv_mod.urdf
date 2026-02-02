@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot name="/home/suriya/ros2_ws/src/webots_platform/config/ugv_mod.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.5 0.3 0.15"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.5 0.3 0.15"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="realsense_camera">
+  </link>
+  <joint name="base_link_realsense_camera_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="realsense_camera"/>
+    <origin xyz="0.26 0 0.06" rpy="-1.570796 0 -1.570796"/>
+  </joint>
+  <link name="gps">
+  </link>
+  <joint name="base_link_gps_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gps"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+  <link name="velodyne">
+    <visual>
+      <origin xyz="0 -0.00165 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.052" length="0.0727"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.00165 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.052" length="0.0727"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_velodyne_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="velodyne"/>
+    <origin xyz="0 0 0.31" rpy="0 0 0"/>
+  </joint>
+  <link name="sick_2d_lidar">
+  </link>
+  <joint name="base_link_sick_2d_lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_2d_lidar"/>
+    <origin xyz="0 0 0.24" rpy="0 0 0"/>
+  </joint>
+  <joint name="wheel_rr_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_rr"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.2 -0.2 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="wheel_rr">
+  </link>
+  <joint name="wheel_rl_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_rl"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.2 0.2 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="wheel_rl">
+  </link>
+  <joint name="wheel_fr_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_fr"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.2 -0.2 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="wheel_fr">
+  </link>
+  <joint name="wheel_fl_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_fl"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.2 0.2 0" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="wheel_fl">
+  </link>
+  <link name="chassis">
+  </link>
+  <joint name="base_link_chassis_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="imu">
+  </link>
+  <joint name="base_link_imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

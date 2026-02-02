@@ -1,0 +1,136 @@
+[0.010s] Invoking command in '/ros2_ws/build/virtual_odom': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/virtual_odom -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/virtual_odom
+[0.083s] -- The C compiler identification is GNU 11.4.0
+[0.152s] -- The CXX compiler identification is GNU 11.4.0
+[0.161s] -- Detecting C compiler ABI info
+[0.245s] -- Detecting C compiler ABI info - done
+[0.255s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.255s] -- Detecting C compile features
+[0.255s] -- Detecting C compile features - done
+[0.258s] -- Detecting CXX compiler ABI info
+[0.347s] -- Detecting CXX compiler ABI info - done
+[0.358s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.358s] -- Detecting CXX compile features
+[0.359s] -- Detecting CXX compile features - done
+[0.363s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.565s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.628s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.673s] -- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)
+[0.726s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.731s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.739s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.748s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.762s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.807s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.809s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.914s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.949s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.004s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.012s] -- Looking for pthread.h
+[1.092s] -- Looking for pthread.h - found
+[1.092s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.175s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.176s] -- Found Threads: TRUE  
+[1.239s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.271s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.318s] -- Checking for module 'eigen3'
+[1.332s] --   Found eigen3, version 3.4.0
+[1.367s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[1.368s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[1.398s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams serialization 
+[1.459s] -- Checking for module 'libusb-1.0'
+[1.475s] --   Found libusb-1.0, version 1.0.25
+[1.511s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[1.512s] -- Found OpenNI: /usr/lib/libOpenNI.so;libusb::libusb (found version "1.5.4.0") 
+[1.512s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[1.576s] -- Found OpenNI2: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb (found version "2.2.0.33") 
+[1.576s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[1.577s] ** WARNING ** io features related to pcap will be disabled
+[1.577s] ** WARNING ** io features related to png will be disabled
+[1.615s] -- Found GLEW: /usr/lib/x86_64-linux-gnu/libGLEW.so  
+[1.620s] -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL GLX 
+[1.777s] -- Found MPI_C: /usr/lib/x86_64-linux-gnu/libmpi.so (found version "3.1") 
+[1.777s] -- Found MPI: TRUE (found version "3.1") found components: C 
+[1.781s] -- Found JsonCpp: /usr/lib/x86_64-linux-gnu/libjsoncpp.so (found suitable version "1.9.5", minimum required is "0.7.0") 
+[1.794s] -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") 
+[1.816s] -- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.37") 
+[1.834s] -- Found Eigen3: /usr/include/eigen3 (found version "3.4.0") 
+[1.927s] -- Found X11: /usr/include   
+[1.927s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+[2.006s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+[2.006s] -- Looking for gethostbyname
+[2.085s] -- Looking for gethostbyname - found
+[2.086s] -- Looking for connect
+[2.156s] -- Looking for connect - found
+[2.156s] -- Looking for remove
+[2.239s] -- Looking for remove - found
+[2.239s] -- Looking for shmat
+[2.316s] -- Looking for shmat - found
+[2.317s] -- Looking for IceConnectionNumber in ICE
+[2.397s] -- Looking for IceConnectionNumber in ICE - found
+[2.482s] -- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.4.7") 
+[2.485s] -- Found double-conversion: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so  
+[2.488s] -- Found LZ4: /usr/lib/x86_64-linux-gnu/liblz4.so (found version "1.9.3") 
+[2.490s] -- Found LZMA: /usr/lib/x86_64-linux-gnu/liblzma.so (found version "5.2.5") 
+[2.505s] -- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80") 
+[2.508s] -- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.3.0")  
+[2.511s] -- Found Freetype: /usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.11.1") 
+[2.515s] -- Found utf8cpp: /usr/include/utf8cpp  
+[2.542s] -- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+[2.557s] -- Checking for module 'flann'
+[2.573s] --   Found flann, version 1.9.1
+[2.618s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[2.619s] -- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+[2.858s] -- looking for PCL_COMMON
+[2.858s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[2.859s] -- looking for PCL_OCTREE
+[2.859s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[2.859s] -- looking for PCL_IO
+[2.860s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[2.860s] -- looking for PCL_KDTREE
+[2.860s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[2.860s] -- looking for PCL_SEARCH
+[2.861s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[2.861s] -- looking for PCL_SAMPLE_CONSENSUS
+[2.861s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[2.861s] -- looking for PCL_FILTERS
+[2.862s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[2.862s] -- looking for PCL_2D
+[2.862s] -- Found PCL_2D: /usr/include/pcl-1.12  
+[2.862s] -- looking for PCL_FEATURES
+[2.862s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[2.862s] -- looking for PCL_REGISTRATION
+[2.863s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[2.863s] -- Found PCL: pcl_common;pcl_octree;pcl_io;pcl_kdtree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_features;pcl_registration;Boost::system;Boost::filesystem;Boost::date_time;Boost::iostreams;Boost::serialization;/usr/lib/libOpenNI.so;libusb::libusb;/usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb;VTK::ChartsCore;VTK::CommonColor;VTK::CommonComputationalGeometry;VTK::CommonCore;VTK::CommonDataModel;VTK::CommonExecutionModel;VTK::CommonMath;VTK::CommonMisc;VTK::CommonTransforms;VTK::FiltersCore;VTK::FiltersExtraction;VTK::FiltersGeneral;VTK::FiltersGeometry;VTK::FiltersModeling;VTK::FiltersSources;VTK::ImagingCore;VTK::ImagingSources;VTK::InteractionImage;VTK::InteractionStyle;VTK::InteractionWidgets;VTK::IOCore;VTK::IOGeometry;VTK::IOImage;VTK::IOLegacy;VTK::IOPLY;VTK::RenderingAnnotation;VTK::RenderingCore;VTK::RenderingContext2D;VTK::RenderingLOD;VTK::RenderingFreeType;VTK::ViewsCore;VTK::ViewsContext2D;VTK::RenderingOpenGL2;VTK::GUISupportQt;FLANN::FLANN  
+[2.867s] -- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+[2.892s] -- Found tf2: 0.25.18 (/opt/ros/humble/share/tf2/cmake)
+[2.901s] -- Found tf2_ros: 0.25.18 (/opt/ros/humble/share/tf2_ros/cmake)
+[2.965s] -- Found tf2_geometry_msgs: 0.25.18 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[2.977s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[2.978s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.978s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[3.028s] -- Configuring done
+[3.034s] -- Generating done
+[3.036s] -- Build files have been written to: /ros2_ws/build/virtual_odom
+[3.049s] Invoked command in '/ros2_ws/build/virtual_odom' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ros2_ws/src/virtual_odom -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ros2_ws/install/virtual_odom
+[3.050s] Invoking command in '/ros2_ws/build/virtual_odom': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/virtual_odom -- -j12 -l12
+[3.089s] Invoked command in '/ros2_ws/build/virtual_odom' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ros2_ws/build/virtual_odom -- -j12 -l12
+[3.091s] Invoking command in '/ros2_ws/build/virtual_odom': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/virtual_odom
+[3.098s] -- Install configuration: "Release"
+[3.099s] -- Execute custom install script
+[3.099s] -- Symlinking: /ros2_ws/install/virtual_odom/lib/virtual_odom/lidar_odom_node.py
+[3.110s] -- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/package_run_dependencies/virtual_odom
+[3.122s] -- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/parent_prefix_path/virtual_odom
+[3.133s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/ament_prefix_path.sh
+[3.144s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/ament_prefix_path.dsv
+[3.150s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/path.sh
+[3.160s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/path.dsv
+[3.172s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.bash
+[3.180s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.sh
+[3.187s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.zsh
+[3.196s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.dsv
+[3.204s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/package.dsv
+[3.210s] -- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/packages/virtual_odom
+[3.220s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/cmake/virtual_odomConfig.cmake
+[3.227s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/cmake/virtual_odomConfig-version.cmake
+[3.233s] -- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/package.xml
+[3.243s] Invoked command in '/ros2_ws/build/virtual_odom' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ros2_ws/build/virtual_odom

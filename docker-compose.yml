@@ -1,0 +1,159 @@
+version: '3.8'
+
+services:
+  # Webots simulation world - CPU version (default)
+  webots_world:
+    image: webots_ws:humble
+    container_name: webots_world_cpu
+    hostname: webots_world
+    profiles: ["cpu"]
+    networks:
+      - webots_network
+    volumes:
+      - ./ros2_ws:/ros2_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - webots_ipc:/tmp/webots
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - WEBOTS_HOME=/usr/local/webots
+    ipc: shareable
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    command:  #"ros2 launch webots_platform world_simulation.launch.py"
+      bash -c "
+      source /opt/ros/humble/setup.bash &&
+      source install/setup.bash &&
+      ros2 launch webots_platform world_simulation.launch.py
+      "
+
+  # Webots simulation world - GPU version
+  webots_world_gpu:
+    image: webots_ws:humble
+    container_name: webots_world
+    hostname: webots_world
+    profiles: ["gpu"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - webots_network
+    volumes:
+      - ./ros2_ws:/ros2_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - webots_ipc:/tmp/webots
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - WEBOTS_HOME=/usr/local/webots
+    ipc: shareable
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    command: >
+      bash -c "
+      source /opt/ros/humble/setup.bash &&
+      source install/setup.bash &&
+      ros2 launch webots_platform world_simulation.launch.py
+      "
+
+  # Robot 1
+  robot_1:
+    image: webots_ws:humble
+    container_name: webots_robot_1
+    hostname: robot_1
+    profiles: ["cpu", "gpu"]
+    networks:
+      - webots_network
+    volumes:
+      - ./ros2_ws:/ros2_ws
+      - webots_ipc:/tmp/webots
+    environment:
+      - ROBOT_NAME=ugv_01
+      - ROBOT_X=0
+      - ROBOT_Y=0
+    ipc: shareable
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    command: >
+      bash -c "
+      sleep 10 &&
+      source /opt/ros/humble/setup.bash &&
+      source install/setup.bash &&
+      ros2 launch webots_platform robot_simulation.launch.py robot_name:=$$ROBOT_NAME x:=$$ROBOT_X y:=$$ROBOT_Y
+      "
+
+  # Robot 2
+  robot_2:
+    image: webots_ws:humble
+    container_name: webots_robot_2
+    hostname: robot_2
+    profiles: ["cpu", "gpu"]
+    networks:
+      - webots_network
+    volumes:
+      - ./ros2_ws:/ros2_ws
+      - webots_ipc:/tmp/webots
+    environment:
+      - ROBOT_NAME=ugv_02
+      - ROBOT_X=2
+      - ROBOT_Y=0
+    ipc: shareable
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    command: >
+      bash -c "
+      sleep 15 &&
+      cd /ros2_ws &&
+      source /opt/ros/humble/setup.bash &&
+      source install/setup.bash &&
+      ros2 launch webots_platform robot_simulation.launch.py robot_name:=$$ROBOT_NAME x:=$$ROBOT_X y:=$$ROBOT_Y
+      "
+
+  # Robot 3
+  robot_3:
+    image: webots_ws:humble
+    container_name: webots_robot_3
+    hostname: robot_3
+    profiles: ["cpu", "gpu"]
+    networks:
+      - webots_network
+    volumes:
+      - ./ros2_ws:/ros2_ws
+      - webots_ipc:/tmp/webots
+    environment:
+      - ROBOT_NAME=ugv_03
+      - ROBOT_X=-2
+      - ROBOT_Y=0
+    ipc: shareable
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    command: >
+      bash -c "
+      sleep 20 &&
+      cd /ros2_ws &&
+      source /opt/ros/humble/setup.bash &&
+      source install/setup.bash &&
+      ros2 launch webots_platform robot_simulation.launch.py robot_name:=$$ROBOT_NAME x:=$$ROBOT_X y:=$$ROBOT_Y
+      "
+
+
+networks:
+  webots_network:
+    external: true
+    driver: bridge
+    name: webots_network
+
+volumes:
+  webots_ipc:
+    name: webots_ipc

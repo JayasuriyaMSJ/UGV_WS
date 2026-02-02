@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Stop Webots simulation
+# Works with both CPU and GPU profiles
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "=========================================="
+echo "  Stopping Webots Simulation"
+echo "=========================================="
+echo ""
+
+# Read the profile if it exists
+if [ -f ".docker_profile" ]; then
+    PROFILE=$(cat .docker_profile)
+    echo "Stopping $PROFILE mode containers..."
+else
+    echo "Stopping all containers..."
+fi
+
+echo ""
+
+# Stop all compose services (both profiles)
+docker compose --profile cpu --profile gpu down
+
+if [ $? -eq 0 ]; then
+    echo ""
+    echo "✓ All containers stopped and removed"
+    echo ""
+else
+    echo ""
+    echo "⚠ Warning: Some containers may not have stopped cleanly"
+    echo "You can force remove with: docker compose --profile cpu --profile gpu down -v"
+    echo ""
+fi

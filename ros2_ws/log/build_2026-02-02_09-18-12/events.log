@@ -1,0 +1,546 @@
+[0.000000] (-) TimerEvent: {}
+[0.000103] (autonomous_navigation) JobQueued: {'identifier': 'autonomous_navigation', 'dependencies': OrderedDict()}
+[0.000137] (sensor_fusion) JobQueued: {'identifier': 'sensor_fusion', 'dependencies': OrderedDict()}
+[0.000181] (virtual_odom) JobQueued: {'identifier': 'virtual_odom', 'dependencies': OrderedDict()}
+[0.000213] (webots_platform) JobQueued: {'identifier': 'webots_platform', 'dependencies': OrderedDict()}
+[0.000286] (autonomous_navigation) JobStarted: {'identifier': 'autonomous_navigation'}
+[0.004688] (sensor_fusion) JobStarted: {'identifier': 'sensor_fusion'}
+[0.007157] (virtual_odom) JobStarted: {'identifier': 'virtual_odom'}
+[0.009676] (webots_platform) JobStarted: {'identifier': 'webots_platform'}
+[0.013465] (autonomous_navigation) JobProgress: {'identifier': 'autonomous_navigation', 'progress': 'cmake'}
+[0.014113] (autonomous_navigation) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/autonomous_navigation', '-DCMAKE_BUILD_TYPE=Release', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/autonomous_navigation'], 'cwd': '/ros2_ws/build/autonomous_navigation', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/autonomous_navigation'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.015147] (sensor_fusion) JobProgress: {'identifier': 'sensor_fusion', 'progress': 'cmake'}
+[0.015622] (sensor_fusion) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/sensor_fusion', '-DCMAKE_BUILD_TYPE=Release', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/sensor_fusion'], 'cwd': '/ros2_ws/build/sensor_fusion', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/sensor_fusion'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.016525] (virtual_odom) JobProgress: {'identifier': 'virtual_odom', 'progress': 'cmake'}
+[0.017043] (virtual_odom) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/virtual_odom', '-DCMAKE_BUILD_TYPE=Release', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/virtual_odom'], 'cwd': '/ros2_ws/build/virtual_odom', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/virtual_odom'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.018856] (webots_platform) JobProgress: {'identifier': 'webots_platform', 'progress': 'cmake'}
+[0.019304] (webots_platform) Command: {'cmd': ['/usr/bin/cmake', '/ros2_ws/src/webots_platform', '-DCMAKE_BUILD_TYPE=Release', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/ros2_ws/install/webots_platform'], 'cwd': '/ros2_ws/build/webots_platform', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/webots_platform'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.088939] (autonomous_navigation) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.089925] (virtual_odom) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.090678] (webots_platform) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.094599] (sensor_fusion) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099453] (-) TimerEvent: {}
+[0.150148] (autonomous_navigation) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.158803] (webots_platform) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.159320] (virtual_odom) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.159816] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.160371] (sensor_fusion) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.165427] (webots_platform) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.168232] (virtual_odom) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.169160] (sensor_fusion) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199553] (-) TimerEvent: {}
+[0.233636] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.239107] (webots_platform) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.247369] (sensor_fusion) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.248155] (autonomous_navigation) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.248671] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.249426] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.251848] (virtual_odom) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.253844] (sensor_fusion) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.254112] (webots_platform) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.254282] (sensor_fusion) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.254379] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.254463] (webots_platform) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.254545] (sensor_fusion) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.254802] (webots_platform) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.256953] (sensor_fusion) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.259305] (webots_platform) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.261997] (virtual_odom) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.262236] (virtual_odom) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.262431] (virtual_odom) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.264652] (virtual_odom) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.299661] (-) TimerEvent: {}
+[0.333703] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.341042] (webots_platform) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.345147] (autonomous_navigation) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.345482] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.346035] (autonomous_navigation) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.349486] (webots_platform) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.349696] (webots_platform) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.350055] (webots_platform) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.352245] (webots_platform) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.352377] (autonomous_navigation) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.353019] (sensor_fusion) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.353865] (virtual_odom) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.359099] (sensor_fusion) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.359548] (sensor_fusion) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.359921] (sensor_fusion) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.362761] (sensor_fusion) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.364972] (virtual_odom) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.365354] (virtual_odom) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.365912] (virtual_odom) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.369860] (virtual_odom) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.399755] (-) TimerEvent: {}
+[0.499977] (-) TimerEvent: {}
+[0.523157] (webots_platform) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.529961] (sensor_fusion) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.530256] (autonomous_navigation) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.571662] (virtual_odom) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.595339] (sensor_fusion) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.598111] (webots_platform) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.600178] (-) TimerEvent: {}
+[0.616359] (autonomous_navigation) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.635094] (virtual_odom) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.643039] (sensor_fusion) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.644493] (webots_platform) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.652383] (autonomous_navigation) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.680408] (virtual_odom) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.689750] (webots_platform) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.696275] (webots_platform) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.698346] (sensor_fusion) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.700250] (-) TimerEvent: {}
+[0.704341] (webots_platform) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.705958] (sensor_fusion) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.714381] (autonomous_navigation) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.716394] (webots_platform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.718560] (sensor_fusion) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.722129] (autonomous_navigation) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.732921] (virtual_odom) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.733234] (webots_platform) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.735426] (sensor_fusion) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.735531] (autonomous_navigation) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.737674] (virtual_odom) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.746106] (virtual_odom) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.752888] (autonomous_navigation) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.755109] (virtual_odom) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.759124] (sensor_fusion) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.769313] (virtual_odom) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.778016] (webots_platform) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.778213] (autonomous_navigation) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.780536] (webots_platform) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.800367] (-) TimerEvent: {}
+[0.813656] (virtual_odom) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.815805] (virtual_odom) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.826147] (sensor_fusion) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.830820] (sensor_fusion) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.842619] (autonomous_navigation) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.847588] (autonomous_navigation) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.871895] (webots_platform) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.900481] (-) TimerEvent: {}
+[0.908022] (webots_platform) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.920980] (virtual_odom) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.927387] (sensor_fusion) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.955417] (sensor_fusion) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.956101] (virtual_odom) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.961156] (autonomous_navigation) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.962911] (webots_platform) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.975720] (webots_platform) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.997679] (autonomous_navigation) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[1.000591] (-) TimerEvent: {}
+[1.010251] (sensor_fusion) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.011288] (virtual_odom) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.019218] (virtual_odom) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.022715] (sensor_fusion) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.055968] (autonomous_navigation) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.068625] (autonomous_navigation) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.074304] (webots_platform) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.074802] (webots_platform) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.098904] (virtual_odom) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.099116] (virtual_odom) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.100682] (-) TimerEvent: {}
+[1.113513] (sensor_fusion) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.113745] (sensor_fusion) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.151638] (autonomous_navigation) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.152051] (autonomous_navigation) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.155181] (webots_platform) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.156962] (webots_platform) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.181831] (virtual_odom) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.182015] (sensor_fusion) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.182749] (sensor_fusion) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.182941] (virtual_odom) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.200853] (-) TimerEvent: {}
+[1.219568] (autonomous_navigation) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[1.220535] (autonomous_navigation) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.237106] (sensor_fusion) StdoutLine: {'line': b'-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[1.238727] (sensor_fusion) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.245883] (webots_platform) StdoutLine: {'line': b'-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[1.246331] (virtual_odom) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[1.248558] (webots_platform) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.253023] (sensor_fusion) StdoutLine: {'line': b'-- Found webots_ros2_driver: 2025.0.0 (/opt/ros/humble/share/webots_ros2_driver/cmake)\n'}
+[1.268696] (webots_platform) StdoutLine: {'line': b'-- Found webots_ros2_driver: 2025.0.0 (/opt/ros/humble/share/webots_ros2_driver/cmake)\n'}
+[1.277890] (virtual_odom) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[1.283566] (autonomous_navigation) StdoutLine: {'line': b'-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[1.284922] (autonomous_navigation) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[1.287909] (sensor_fusion) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.289466] (sensor_fusion) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.289698] (sensor_fusion) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.297128] (autonomous_navigation) StdoutLine: {'line': b'-- Found webots_ros2_driver: 2025.0.0 (/opt/ros/humble/share/webots_ros2_driver/cmake)\n'}
+[1.300967] (-) TimerEvent: {}
+[1.324699] (virtual_odom) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[1.327989] (webots_platform) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.329685] (autonomous_navigation) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[1.329824] (webots_platform) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.329912] (webots_platform) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.330583] (autonomous_navigation) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[1.330714] (autonomous_navigation) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[1.338849] (virtual_odom) StdoutLine: {'line': b'--   Found eigen3, version 3.4.0\n'}
+[1.374453] (virtual_odom) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[1.374636] (virtual_odom) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[1.401106] (-) TimerEvent: {}
+[1.405240] (virtual_odom) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.65.0") found components: system filesystem date_time iostreams serialization \n'}
+[1.466283] (virtual_odom) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[1.478936] (autonomous_navigation) StdoutLine: {'line': b'-- Found pluginlib: 5.1.3 (/opt/ros/humble/share/pluginlib/cmake)\n'}
+[1.481591] (virtual_odom) StdoutLine: {'line': b'--   Found libusb-1.0, version 1.0.25\n'}
+[1.483229] (autonomous_navigation) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[1.498592] (sensor_fusion) StdoutLine: {'line': b'-- Found pluginlib: 5.1.3 (/opt/ros/humble/share/pluginlib/cmake)\n'}
+[1.501425] (sensor_fusion) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[1.501570] (-) TimerEvent: {}
+[1.502671] (autonomous_navigation) StdoutLine: {'line': b'-- Found rtabmap_ros: 0.22.1 (/opt/ros/humble/share/rtabmap_ros/cmake)\n'}
+[1.504384] (autonomous_navigation) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.516540] (sensor_fusion) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.517626] (virtual_odom) StdoutLine: {'line': b'-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  \n'}
+[1.518944] (virtual_odom) StdoutLine: {'line': b'-- Found OpenNI: /usr/lib/libOpenNI.so;libusb::libusb (found version "1.5.4.0") \n'}
+[1.519074] (virtual_odom) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[1.566035] (webots_platform) StdoutLine: {'line': b'-- Found pluginlib: 5.1.3 (/opt/ros/humble/share/pluginlib/cmake)\n'}
+[1.568922] (webots_platform) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[1.583191] (virtual_odom) StdoutLine: {'line': b'-- Found OpenNI2: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb (found version "2.2.0.33") \n'}
+[1.583405] (virtual_odom) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[1.583736] (virtual_odom) StderrLine: {'line': b'** WARNING ** io features related to pcap will be disabled\n'}
+[1.583957] (virtual_odom) StderrLine: {'line': b'** WARNING ** io features related to png will be disabled\n'}
+[1.591905] (webots_platform) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.601717] (-) TimerEvent: {}
+[1.611278] (autonomous_navigation) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.611825] (autonomous_navigation) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.612180] (autonomous_navigation) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.612808] (sensor_fusion) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.613302] (autonomous_navigation) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.613741] (sensor_fusion) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.614275] (autonomous_navigation) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.614359] (sensor_fusion) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.616328] (sensor_fusion) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.617645] (autonomous_navigation) StdoutLine: {'line': b'-- Generating done\n'}
+[1.618047] (sensor_fusion) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.619138] (autonomous_navigation) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/autonomous_navigation\n'}
+[1.621900] (virtual_odom) StdoutLine: {'line': b'-- Found GLEW: /usr/lib/x86_64-linux-gnu/libGLEW.so  \n'}
+[1.625479] (sensor_fusion) StdoutLine: {'line': b'-- Generating done\n'}
+[1.627132] (virtual_odom) StdoutLine: {'line': b'-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL GLX \n'}
+[1.627881] (autonomous_navigation) CommandEnded: {'returncode': 0}
+[1.628448] (autonomous_navigation) JobProgress: {'identifier': 'autonomous_navigation', 'progress': 'build'}
+[1.629033] (autonomous_navigation) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/autonomous_navigation', '--', '-j12', '-l12'], 'cwd': '/ros2_ws/build/autonomous_navigation', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/autonomous_navigation'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.629910] (sensor_fusion) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/sensor_fusion\n'}
+[1.641504] (sensor_fusion) CommandEnded: {'returncode': 0}
+[1.641913] (sensor_fusion) JobProgress: {'identifier': 'sensor_fusion', 'progress': 'build'}
+[1.642259] (sensor_fusion) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/sensor_fusion', '--', '-j12', '-l12'], 'cwd': '/ros2_ws/build/sensor_fusion', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/sensor_fusion'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.669715] (autonomous_navigation) CommandEnded: {'returncode': 0}
+[1.670135] (autonomous_navigation) JobProgress: {'identifier': 'autonomous_navigation', 'progress': 'install'}
+[1.683065] (autonomous_navigation) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/autonomous_navigation'], 'cwd': '/ros2_ws/build/autonomous_navigation', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/autonomous_navigation'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.688548] (sensor_fusion) CommandEnded: {'returncode': 0}
+[1.689381] (sensor_fusion) JobProgress: {'identifier': 'sensor_fusion', 'progress': 'install'}
+[1.689877] (sensor_fusion) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/sensor_fusion'], 'cwd': '/ros2_ws/build/sensor_fusion', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/sensor_fusion'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.693530] (autonomous_navigation) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[1.694956] (autonomous_navigation) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[1.695985] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_localization.launch.py\n'}
+[1.698227] (sensor_fusion) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[1.698588] (sensor_fusion) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[1.698865] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion//launch/ekf_test.launch.py\n'}
+[1.701805] (-) TimerEvent: {}
+[1.702693] (webots_platform) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.702899] (webots_platform) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /ros2_ws/src/webots_platform/include\n'}
+[1.702980] (webots_platform) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.703317] (webots_platform) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.704012] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping.launch.py\n'}
+[1.704201] (webots_platform) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.704374] (webots_platform) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.706340] (webots_platform) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.706494] (webots_platform) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.706876] (webots_platform) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.709964] (webots_platform) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.710266] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion//config/Figure_1.png\n'}
+[1.714385] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping_bkpup\n'}
+[1.719808] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion//config/sensor_fusion.png\n'}
+[1.723332] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/mapping_rqt.png\n'}
+[1.731501] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion//params/ekf_params.yaml\n'}
+[1.734399] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/nav2.yaml\n'}
+[1.735283] (webots_platform) StdoutLine: {'line': b'-- Generating done\n'}
+[1.738841] (webots_platform) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/webots_platform\n'}
+[1.742736] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/lib/sensor_fusion/data_viz.py\n'}
+[1.746047] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/package_run_dependencies/autonomous_navigation\n'}
+[1.748858] (webots_platform) CommandEnded: {'returncode': 0}
+[1.749453] (webots_platform) JobProgress: {'identifier': 'webots_platform', 'progress': 'build'}
+[1.749841] (webots_platform) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/webots_platform', '--', '-j12', '-l12'], 'cwd': '/ros2_ws/build/webots_platform', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/webots_platform'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.751327] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/lib/sensor_fusion/slippage_generator.py\n'}
+[1.753548] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/parent_prefix_path/autonomous_navigation\n'}
+[1.762847] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/ament_index/resource_index/package_run_dependencies/sensor_fusion\n'}
+[1.764238] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/ament_prefix_path.sh\n'}
+[1.769129] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/ament_index/resource_index/parent_prefix_path/sensor_fusion\n'}
+[1.772377] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/ament_prefix_path.dsv\n'}
+[1.778732] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/environment/ament_prefix_path.sh\n'}
+[1.783683] (virtual_odom) StdoutLine: {'line': b'-- Found MPI_C: /usr/lib/x86_64-linux-gnu/libmpi.so (found version "3.1") \n'}
+[1.783978] (virtual_odom) StdoutLine: {'line': b'-- Found MPI: TRUE (found version "3.1") found components: C \n'}
+[1.784755] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/path.sh\n'}
+[1.787927] (virtual_odom) StdoutLine: {'line': b'-- Found JsonCpp: /usr/lib/x86_64-linux-gnu/libjsoncpp.so (found suitable version "1.9.5", minimum required is "0.7.0") \n'}
+[1.789973] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/environment/ament_prefix_path.dsv\n'}
+[1.799020] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/path.dsv\n'}
+[1.800060] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/environment/path.sh\n'}
+[1.801564] (virtual_odom) StdoutLine: {'line': b'-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") \n'}
+[1.801870] (-) TimerEvent: {}
+[1.806028] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.bash\n'}
+[1.812432] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/environment/path.dsv\n'}
+[1.814318] (webots_platform) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/webots_platform.dir/src/UGV_Driver.cpp.o\n'}
+[1.815332] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.sh\n'}
+[1.822893] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/local_setup.bash\n'}
+[1.823138] (virtual_odom) StdoutLine: {'line': b'-- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.37") \n'}
+[1.825767] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.zsh\n'}
+[1.831591] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/local_setup.sh\n'}
+[1.836073] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/local_setup.dsv\n'}
+[1.838801] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/local_setup.zsh\n'}
+[1.841494] (virtual_odom) StdoutLine: {'line': b'-- Found Eigen3: /usr/include/eigen3 (found version "3.4.0") \n'}
+[1.846391] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/local_setup.dsv\n'}
+[1.847306] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/package.dsv\n'}
+[1.856805] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/packages/autonomous_navigation\n'}
+[1.856973] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/package.dsv\n'}
+[1.864578] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/cmake/autonomous_navigationConfig.cmake\n'}
+[1.867108] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/ament_index/resource_index/packages/sensor_fusion\n'}
+[1.874615] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/cmake/autonomous_navigationConfig-version.cmake\n'}
+[1.874805] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/cmake/sensor_fusionConfig.cmake\n'}
+[1.884470] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/cmake/sensor_fusionConfig-version.cmake\n'}
+[1.885141] (autonomous_navigation) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/package.xml\n'}
+[1.895417] (sensor_fusion) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/sensor_fusion/share/sensor_fusion/package.xml\n'}
+[1.897755] (autonomous_navigation) CommandEnded: {'returncode': 0}
+[1.902140] (-) TimerEvent: {}
+[1.919841] (autonomous_navigation) JobEnded: {'identifier': 'autonomous_navigation', 'rc': 0}
+[1.921065] (sensor_fusion) CommandEnded: {'returncode': 0}
+[1.933352] (sensor_fusion) JobEnded: {'identifier': 'sensor_fusion', 'rc': 0}
+[1.933709] (virtual_odom) StdoutLine: {'line': b'-- Found X11: /usr/include   \n'}
+[1.933826] (virtual_odom) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so\n'}
+[2.002286] (-) TimerEvent: {}
+[2.012656] (virtual_odom) StdoutLine: {'line': b'-- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found\n'}
+[2.012837] (virtual_odom) StdoutLine: {'line': b'-- Looking for gethostbyname\n'}
+[2.092469] (virtual_odom) StdoutLine: {'line': b'-- Looking for gethostbyname - found\n'}
+[2.092672] (virtual_odom) StdoutLine: {'line': b'-- Looking for connect\n'}
+[2.102373] (-) TimerEvent: {}
+[2.162442] (virtual_odom) StdoutLine: {'line': b'-- Looking for connect - found\n'}
+[2.162752] (virtual_odom) StdoutLine: {'line': b'-- Looking for remove\n'}
+[2.202551] (-) TimerEvent: {}
+[2.246382] (virtual_odom) StdoutLine: {'line': b'-- Looking for remove - found\n'}
+[2.246560] (virtual_odom) StdoutLine: {'line': b'-- Looking for shmat\n'}
+[2.302772] (-) TimerEvent: {}
+[2.323403] (virtual_odom) StdoutLine: {'line': b'-- Looking for shmat - found\n'}
+[2.323739] (virtual_odom) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE\n'}
+[2.402920] (-) TimerEvent: {}
+[2.403862] (virtual_odom) StdoutLine: {'line': b'-- Looking for IceConnectionNumber in ICE - found\n'}
+[2.489054] (virtual_odom) StdoutLine: {'line': b'-- Found EXPAT: /usr/lib/x86_64-linux-gnu/libexpat.so (found version "2.4.7") \n'}
+[2.491647] (virtual_odom) StdoutLine: {'line': b'-- Found double-conversion: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so  \n'}
+[2.494692] (virtual_odom) StdoutLine: {'line': b'-- Found LZ4: /usr/lib/x86_64-linux-gnu/liblz4.so (found version "1.9.3") \n'}
+[2.496695] (virtual_odom) StdoutLine: {'line': b'-- Found LZMA: /usr/lib/x86_64-linux-gnu/liblzma.so (found version "5.2.5") \n'}
+[2.503057] (-) TimerEvent: {}
+[2.511592] (virtual_odom) StdoutLine: {'line': b'-- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so (found version "80") \n'}
+[2.514815] (virtual_odom) StdoutLine: {'line': b'-- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.3.0")  \n'}
+[2.517975] (virtual_odom) StdoutLine: {'line': b'-- Found Freetype: /usr/lib/x86_64-linux-gnu/libfreetype.so (found version "2.11.1") \n'}
+[2.522514] (virtual_odom) StdoutLine: {'line': b'-- Found utf8cpp: /usr/include/utf8cpp  \n'}
+[2.549113] (virtual_odom) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)\n'}
+[2.563969] (virtual_odom) StdoutLine: {'line': b"-- Checking for module 'flann'\n"}
+[2.580059] (virtual_odom) StdoutLine: {'line': b'--   Found flann, version 1.9.1\n'}
+[2.603252] (-) TimerEvent: {}
+[2.625481] (virtual_odom) StdoutLine: {'line': b'-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  \n'}
+[2.625701] (virtual_odom) StdoutLine: {'line': b'-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)\n'}
+[2.703385] (-) TimerEvent: {}
+[2.803568] (-) TimerEvent: {}
+[2.865074] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_COMMON\n'}
+[2.865551] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[2.865724] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_OCTREE\n'}
+[2.866090] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[2.866276] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_IO\n'}
+[2.866669] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[2.866833] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_KDTREE\n'}
+[2.867227] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[2.867325] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_SEARCH\n'}
+[2.867689] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[2.867766] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_SAMPLE_CONSENSUS\n'}
+[2.868258] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[2.868340] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_FILTERS\n'}
+[2.868649] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[2.868803] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_2D\n'}
+[2.869003] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.12  \n'}
+[2.869078] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_FEATURES\n'}
+[2.869450] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[2.869613] (virtual_odom) StdoutLine: {'line': b'-- looking for PCL_REGISTRATION\n'}
+[2.870088] (virtual_odom) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[2.870437] (virtual_odom) StdoutLine: {'line': b'-- Found PCL: pcl_common;pcl_octree;pcl_io;pcl_kdtree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_features;pcl_registration;Boost::system;Boost::filesystem;Boost::date_time;Boost::iostreams;Boost::serialization;/usr/lib/libOpenNI.so;libusb::libusb;/usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb;VTK::ChartsCore;VTK::CommonColor;VTK::CommonComputationalGeometry;VTK::CommonCore;VTK::CommonDataModel;VTK::CommonExecutionModel;VTK::CommonMath;VTK::CommonMisc;VTK::CommonTransforms;VTK::FiltersCore;VTK::FiltersExtraction;VTK::FiltersGeneral;VTK::FiltersGeometry;VTK::FiltersModeling;VTK::FiltersSources;VTK::ImagingCore;VTK::ImagingSources;VTK::InteractionImage;VTK::InteractionStyle;VTK::InteractionWidgets;VTK::IOCore;VTK::IOGeometry;VTK::IOImage;VTK::IOLegacy;VTK::IOPLY;VTK::RenderingAnnotation;VTK::RenderingCore;VTK::RenderingContext2D;VTK::RenderingLOD;VTK::RenderingFreeType;VTK::ViewsCore;VTK::ViewsContext2D;VTK::RenderingOpenGL2;VTK::GUISupportQt;FLANN::FLANN  \n'}
+[2.874029] (virtual_odom) StdoutLine: {'line': b'-- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)\n'}
+[2.898904] (virtual_odom) StdoutLine: {'line': b'-- Found tf2: 0.25.18 (/opt/ros/humble/share/tf2/cmake)\n'}
+[2.903672] (-) TimerEvent: {}
+[2.907713] (virtual_odom) StdoutLine: {'line': b'-- Found tf2_ros: 0.25.18 (/opt/ros/humble/share/tf2_ros/cmake)\n'}
+[2.972243] (virtual_odom) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.25.18 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)\n'}
+[2.984432] (virtual_odom) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)\n'}
+[2.985432] (virtual_odom) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.4.0") \n'}
+[2.985613] (virtual_odom) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[3.003903] (-) TimerEvent: {}
+[3.035131] (virtual_odom) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.040674] (virtual_odom) StdoutLine: {'line': b'-- Generating done\n'}
+[3.043212] (virtual_odom) StdoutLine: {'line': b'-- Build files have been written to: /ros2_ws/build/virtual_odom\n'}
+[3.055152] (virtual_odom) CommandEnded: {'returncode': 0}
+[3.056968] (virtual_odom) JobProgress: {'identifier': 'virtual_odom', 'progress': 'build'}
+[3.057198] (virtual_odom) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ros2_ws/build/virtual_odom', '--', '-j12', '-l12'], 'cwd': '/ros2_ws/build/virtual_odom', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/virtual_odom'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[3.096011] (virtual_odom) CommandEnded: {'returncode': 0}
+[3.096612] (virtual_odom) JobProgress: {'identifier': 'virtual_odom', 'progress': 'install'}
+[3.097488] (virtual_odom) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/virtual_odom'], 'cwd': '/ros2_ws/build/virtual_odom', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/virtual_odom'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[3.104025] (-) TimerEvent: {}
+[3.105287] (virtual_odom) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[3.105629] (virtual_odom) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[3.105836] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/lib/virtual_odom/lidar_odom_node.py\n'}
+[3.117211] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/package_run_dependencies/virtual_odom\n'}
+[3.129300] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/parent_prefix_path/virtual_odom\n'}
+[3.139849] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/ament_prefix_path.sh\n'}
+[3.150540] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/ament_prefix_path.dsv\n'}
+[3.157098] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/path.sh\n'}
+[3.166950] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/environment/path.dsv\n'}
+[3.179405] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.bash\n'}
+[3.186603] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.sh\n'}
+[3.193846] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.zsh\n'}
+[3.202734] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/local_setup.dsv\n'}
+[3.204158] (-) TimerEvent: {}
+[3.211048] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/package.dsv\n'}
+[3.217048] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/ament_index/resource_index/packages/virtual_odom\n'}
+[3.226805] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/cmake/virtual_odomConfig.cmake\n'}
+[3.233754] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/cmake/virtual_odomConfig-version.cmake\n'}
+[3.240432] (virtual_odom) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/virtual_odom/share/virtual_odom/package.xml\n'}
+[3.248935] (virtual_odom) CommandEnded: {'returncode': 0}
+[3.260176] (virtual_odom) JobEnded: {'identifier': 'virtual_odom', 'rc': 0}
+[3.304293] (-) TimerEvent: {}
+[3.404555] (-) TimerEvent: {}
+[3.504831] (-) TimerEvent: {}
+[3.605050] (-) TimerEvent: {}
+[3.705273] (-) TimerEvent: {}
+[3.805519] (-) TimerEvent: {}
+[3.905799] (-) TimerEvent: {}
+[4.006065] (-) TimerEvent: {}
+[4.106239] (-) TimerEvent: {}
+[4.206445] (-) TimerEvent: {}
+[4.306650] (-) TimerEvent: {}
+[4.406889] (-) TimerEvent: {}
+[4.507119] (-) TimerEvent: {}
+[4.607371] (-) TimerEvent: {}
+[4.707599] (-) TimerEvent: {}
+[4.807893] (-) TimerEvent: {}
+[4.908138] (-) TimerEvent: {}
+[5.008481] (-) TimerEvent: {}
+[5.108732] (-) TimerEvent: {}
+[5.208927] (-) TimerEvent: {}
+[5.309126] (-) TimerEvent: {}
+[5.409623] (-) TimerEvent: {}
+[5.510099] (-) TimerEvent: {}
+[5.610475] (-) TimerEvent: {}
+[5.710741] (-) TimerEvent: {}
+[5.811074] (-) TimerEvent: {}
+[5.911313] (-) TimerEvent: {}
+[6.011551] (-) TimerEvent: {}
+[6.111748] (-) TimerEvent: {}
+[6.212037] (-) TimerEvent: {}
+[6.312390] (-) TimerEvent: {}
+[6.412578] (-) TimerEvent: {}
+[6.512799] (-) TimerEvent: {}
+[6.613017] (-) TimerEvent: {}
+[6.713294] (-) TimerEvent: {}
+[6.813500] (-) TimerEvent: {}
+[6.913730] (-) TimerEvent: {}
+[7.014004] (-) TimerEvent: {}
+[7.114310] (-) TimerEvent: {}
+[7.214564] (-) TimerEvent: {}
+[7.314873] (-) TimerEvent: {}
+[7.415139] (-) TimerEvent: {}
+[7.515400] (-) TimerEvent: {}
+[7.615590] (-) TimerEvent: {}
+[7.715810] (-) TimerEvent: {}
+[7.816128] (-) TimerEvent: {}
+[7.916348] (-) TimerEvent: {}
+[8.016534] (-) TimerEvent: {}
+[8.116750] (-) TimerEvent: {}
+[8.216971] (-) TimerEvent: {}
+[8.317282] (-) TimerEvent: {}
+[8.417461] (-) TimerEvent: {}
+[8.517760] (-) TimerEvent: {}
+[8.617972] (-) TimerEvent: {}
+[8.718281] (-) TimerEvent: {}
+[8.818579] (-) TimerEvent: {}
+[8.918860] (-) TimerEvent: {}
+[9.019166] (-) TimerEvent: {}
+[9.119346] (-) TimerEvent: {}
+[9.219652] (-) TimerEvent: {}
+[9.319967] (-) TimerEvent: {}
+[9.420282] (-) TimerEvent: {}
+[9.520583] (-) TimerEvent: {}
+[9.620887] (-) TimerEvent: {}
+[9.721351] (-) TimerEvent: {}
+[9.821569] (-) TimerEvent: {}
+[9.921843] (-) TimerEvent: {}
+[10.022046] (-) TimerEvent: {}
+[10.122264] (-) TimerEvent: {}
+[10.222613] (-) TimerEvent: {}
+[10.323018] (-) TimerEvent: {}
+[10.423329] (-) TimerEvent: {}
+[10.523536] (-) TimerEvent: {}
+[10.623756] (-) TimerEvent: {}
+[10.723942] (-) TimerEvent: {}
+[10.824264] (-) TimerEvent: {}
+[10.924452] (-) TimerEvent: {}
+[11.024644] (-) TimerEvent: {}
+[11.124976] (-) TimerEvent: {}
+[11.225368] (-) TimerEvent: {}
+[11.325617] (-) TimerEvent: {}
+[11.425827] (-) TimerEvent: {}
+[11.439465] (webots_platform) StdoutLine: {'line': b'[100%] Linking CXX shared library libwebots_platform.so\n'}
+[11.525944] (-) TimerEvent: {}
+[11.626145] (-) TimerEvent: {}
+[11.651749] (webots_platform) StdoutLine: {'line': b'[100%] Built target webots_platform\n'}
+[11.662937] (webots_platform) CommandEnded: {'returncode': 0}
+[11.664281] (webots_platform) JobProgress: {'identifier': 'webots_platform', 'progress': 'install'}
+[11.664840] (webots_platform) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ros2_ws/build/webots_platform'], 'cwd': '/ros2_ws/build/webots_platform', 'env': OrderedDict([('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('HOSTNAME', 'd2111613ad7c'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/webots:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('QTWEBENGINE_DISABLE_SANDBOX', '1'), ('LANG', 'en_US.UTF-8'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('WEBOTS_HOME', '/usr/local/webots'), ('PWD', '/ros2_ws/build/webots_platform'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[11.676130] (webots_platform) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[11.676662] (webots_platform) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[11.676896] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//ugv_driver.xml\n'}
+[11.687111] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/lib/libwebots_platform.so\n'}
+[11.704042] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//launch/robot_simulation.launch.py\n'}
+[11.719410] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//launch/ugv_description.launch.py\n'}
+[11.726317] (-) TimerEvent: {}
+[11.733757] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//launch/world_simulation.launch.py\n'}
+[11.748854] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//resources/rosbot_controllers.yaml\n'}
+[11.761967] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//resources/rosbot_links_remappings.yaml\n'}
+[11.773048] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/.test.wbproj\n'}
+[11.780411] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/.ugv_world.wbproj\n'}
+[11.791565] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/proto\n'}
+[11.799381] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/robot.wbt\n'}
+[11.809099] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/test.wbt\n'}
+[11.823679] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/ugv_it_office.wbt\n'}
+[11.826419] (-) TimerEvent: {}
+[11.834509] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/ugv_world.wbt\n'}
+[11.849910] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/ugv_world_it.wbt\n'}
+[11.861291] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//worlds/ugv_world_updated.wbt\n'}
+[11.873645] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/Robot.urdf\n'}
+[11.882311] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/Rosbot.urdf\n'}
+[11.888581] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/UGV.urdf\n'}
+[11.896666] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/ugv.urdf\n'}
+[11.911791] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/ugv_mod.urdf\n'}
+[11.918190] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//config/ugv_mode.urdf\n'}
+[11.926538] (-) TimerEvent: {}
+[11.928638] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//rviz/webot_viz.rviz\n'}
+[11.936757] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform//protos/UGV.proto\n'}
+[11.948857] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/library_path.sh\n'}
+[11.965695] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/library_path.dsv\n'}
+[11.976632] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/lib/webots_platform/ugv_controller.py\n'}
+[11.991223] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/lib/webots_platform/spawn_proto_robot.py\n'}
+[12.005906] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/lib/webots_platform/odom_debugger.py\n'}
+[12.018965] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/ament_index/resource_index/package_run_dependencies/webots_platform\n'}
+[12.026688] (-) TimerEvent: {}
+[12.032588] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/ament_index/resource_index/parent_prefix_path/webots_platform\n'}
+[12.045488] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/ament_prefix_path.sh\n'}
+[12.053831] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/ament_prefix_path.dsv\n'}
+[12.064021] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/path.sh\n'}
+[12.073427] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/environment/path.dsv\n'}
+[12.086565] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/local_setup.bash\n'}
+[12.096271] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/local_setup.sh\n'}
+[12.106073] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/local_setup.zsh\n'}
+[12.118368] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/local_setup.dsv\n'}
+[12.126849] (-) TimerEvent: {}
+[12.133367] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/package.dsv\n'}
+[12.143666] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/ament_index/resource_index/packages/webots_platform\n'}
+[12.161258] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/ament_index/resource_index/webots_ros2_driver__pluginlib__plugin/webots_platform\n'}
+[12.172433] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[12.188262] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[12.202670] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/cmake/webots_platformConfig.cmake\n'}
+[12.218748] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/cmake/webots_platformConfig-version.cmake\n'}
+[12.227072] (-) TimerEvent: {}
+[12.228399] (webots_platform) StdoutLine: {'line': b'-- Symlinking: /ros2_ws/install/webots_platform/share/webots_platform/package.xml\n'}
+[12.244077] (webots_platform) CommandEnded: {'returncode': 0}
+[12.259504] (webots_platform) JobEnded: {'identifier': 'webots_platform', 'rc': 0}
+[12.259937] (-) EventReactorShutdown: {}

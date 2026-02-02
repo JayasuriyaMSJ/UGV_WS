@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Build ROS2 workspace inside Docker container
+# This script builds your ROS2 packages
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "=========================================="
+echo "  Building ROS2 Workspace"
+echo "=========================================="
+echo ""
+
+# Check if image exists
+if ! docker image inspect webots_ws:humble &> /dev/null; then
+    echo "Error: Docker image webots_ws:humble not found!"
+    echo "Please run ./docker_setup first"
+    exit 1
+fi
+
+# Check if ros2_ws/src exists and has content
+if [ ! -d "ros2_ws/src" ] || [ -z "$(ls -A ros2_ws/src)" ]; then
+    echo "⚠ Warning: ros2_ws/src is empty!"
+    echo "Please add your ROS2 packages to ros2_ws/src before building"
+    exit 1
+fi
+
+echo "Building ROS2 packages..."
+echo "This may take several minutes..."
+echo ""
+
+# First, install any missing dependencies
+echo "Step 1: Installing dependencies with rosdep..."
+docker run --rm \
+  -v "$(pwd)/ros2_ws:/ros2_ws" \
+  -w /ros2_ws \
+  webots_ws:humble \
+  bash -c "
+    source /opt/ros/humble/setup.bash && \
+    rosdep update && \
+    rosdep install --from-paths src --ignore-src -r -y
+  " || echo "⚠ Some dependencies may not be available, continuing..."
+
+echo ""
+echo "Step 2: Building packages with colcon..."
+
+# Run colcon build inside container
+docker run --rm \
+  -v "$(pwd)/ros2_ws:/ros2_ws" \
+  -w /ros2_ws \
+  webots_ws:humble \
+  bash -c "
+    source /opt/ros/humble/setup.bash && \
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+  "
+
+if [ $? -eq 0 ]; then
+    echo ""
+    echo "=========================================="
+    echo "  Build Successful!"
+    echo "=========================================="
+    echo ""
+    echo "Your workspace is ready. You can now:"
+    echo "  - Start simulation: ./docker_create"
+    echo ""
+else
+    echo ""
+    echo "Build failed!"
+    echo "Check the error messages above"
+    exit 1
+fi

@@ -1,0 +1,269 @@
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition, UnlessCondition
+from launch_ros.actions import Node, SetParameter
+
+import os
+import datetime
+from ament_index_python.packages import get_package_share_directory
+
+
+def generate_launch_description():
+
+    localization = LaunchConfiguration('localization')
+
+    # Safe timestamp for filenames (no spaces or colons)
+    now_ = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    parameters = {
+            'frame_id': 'base_link',
+            'odom_frame_id': 'odom',
+            'map_frame_id': 'map',
+            
+            # Reduced variance for simulation (more accurate than real world)
+            'odom_tf_linear_variance': 0.0001,
+            'odom_tf_angular_variance': 0.0001,
+            
+            # Subscriptions
+            'subscribe_rgbd': True,
+            'subscribe_scan': False,  
+            'subscribe_scan_cloud': True,
+            'subscribe_rgb': False,
+            'subscribe_depth': False,
+
+            # Synchronization - critical for performance
+            'approx_sync': True,
+            'sync_queue_size': 5,  # Reduced from 10 for less memory usage
+            'approx_sync_max_interval': 0.01,  # Tighter sync for simulation
+
+            # Memory Management - optimized for real-time mapping
+            'Mem/DepthAsMask': 'false',
+            'Mem/BadSignaturesIgnored': 'true',  # Changed to true - ignore bad signatures
+            'Mem/NotLinkedNodesKept': 'true',  # Changed to true - keep for loop closures
+            'Mem/ReduceGraph': 'false',
+            'Mem/IncrementalMemory': 'true',
+            'Mem/InitWMWithAllNodes': 'false',
+            'Mem/STMSize': '30',  # Short-term memory size
+            'Mem/ImagePreDecimation': '1',  # No decimation for simulation
+            'Mem/ImagePostDecimation': '1',
+            'Mem/LaserScanDownsampleStepSize': '1',  # Process every scan point
+            
+            # RGBD Parameters - optimized for mapping
+            'RGBD/NeighborLinkRefining': 'true',
+            'RGBD/ProximityBySpace': 'true',
+            'RGBD/ProximityByTime': 'false',
+            'RGBD/ProximityPathMaxNeighbors': '5',  # Reduced from 10 for performance
+            'RGBD/LocalRadius': '5',
+            'RGBD/MaxOdomCacheSize': '50',  # Reduced from 100
+            'RGBD/OptimizeFromGraphEnd': 'false',
+            'RGBD/OptimizeMaxError': '3',
+            'RGBD/LoopClosureReextractFeatures': 'true',
+            'RGBD/LocalBundleOnLoopClosure': 'true',
+            'RGBD/ProximityOdomGuess': 'false',
+            
+            # Update thresholds - balanced for good mapping and performance
+            'RGBD/LinearUpdate': '0.1',  # Reduced from 0.3 for denser map
+            'RGBD/AngularUpdate': '0.05',  # Reduced from 0.1 for better rotation tracking
+            'RGBD/LinearSpeedUpdate': '0.0',
+            'RGBD/AngularSpeedUpdate': '0.0',
+            'RGBD/NewMapOdomChangeDistance': '0.5',  # Distance to start new map
+            'RGBD/SavedLocalizationIgnored': 'false',
+            
+            # 2D Occupancy Grid - optimized settings
+            'Grid/Sensor': '1',  # 1=laser scan, 0=depth image
+            'Grid/FromDepth': 'false',
+            'Grid/RangeMin': '0.2',  # Added minimum range
+            'Grid/RangeMax': '20',
+            'Grid/CellSize': '0.05',  # 5cm resolution
+            'Grid/NormalsSegmentation': 'false',
+            'Grid/3D': 'false',
+            'Grid/MaxGroundHeight': '0.05',
+            'Grid/MaxObstacleHeight': '2.0',
+            'Grid/MinClusterSize': '20',  # Filter small clusters
+            'Grid/GroundIsObstacle': 'false',
+            'Grid/NoiseFilteringRadius': '0.1',
+            'Grid/NoiseFilteringMinNeighbors': '5',
+            
+            # 2D SLAM
+            'Reg/Force3DoF': 'true',
+            'Reg/Strategy': '1',  # Changed to 1 (ICP only) for LiDAR-focused mapping
+            
+            # Visual Features - using GFTT/BRIEF (faster than SURF)
+            'Vis/FeatureType': '6',  # Changed to 6 (GFTT/BRIEF) - faster than SURF
+            'Vis/MinInliers': '15',  # Reduced from 20 for easier loop closures
+            'Vis/MaxDepth': '4.0',  # Increased from 3.0
+            'Vis/DepthAsMask': 'false',
+            'Vis/MaxFeatures': '500',  # Reduced features for performance
+            'Vis/CorGuessWinSize': '20',
+            
+            # Keypoint detector - matching visual features
+            'Kp/DetectorStrategy': '6',  # GFTT/BRIEF
+            'Kp/NndrRatio': '0.8',  # Slightly relaxed from 0.7
+            'Kp/MaxFeatures': '500',
+            'Kp/BadSignRatio': '0.5',
+            
+            # Optimizer - using GTSAM (best for accuracy)
+            'Optimizer/Strategy': '2',  # GTSAM
+            'Optimizer/Iterations': '100',  # Increased from 20 for better optimization
+            'Optimizer/Epsilon': '0.00001',
+            'Optimizer/Robust': 'true',  # Changed to true for outlier handling
+            'Optimizer/Slam2D': 'true',
+            'Optimizer/VarianceIgnored': 'false',
+            
+            # ICP Parameters - optimized for Velodyne/LiDAR
+            'Icp/VoxelSize': '0.1',  # Reduced from 0.2 for finer detail
+            'Icp/PointToPlaneK': '20',
+            'Icp/PointToPlaneRadius': '0',
+            'Icp/PointToPlane': 'true',
+            'Icp/Iterations': '50',  # Increased from 30
+            'Icp/Epsilon': '0.001',  # Relaxed for faster convergence
+            'Icp/MaxTranslation': '2',  # Reduced from 3 for more conservative matching
+            'Icp/MaxRotation': '0.5',  # Reduced from 0.78
+            'Icp/MaxCorrespondenceDistance': '0.5',  # Reduced from 1
+            'Icp/PM': 'true',  # Use libpointmatcher
+            'Icp/PMOutlierRatio': '0.85',  # Increased from 0.7
+            'Icp/CorrespondenceRatio': '0.2',  # Increased from 0.05
+            'Icp/PointToPlaneGroundNormalsUp': '0.9',
+            
+            # Loop Closure Detection - optimized
+            'RGBD/ProximityMaxGraphDepth': '50',
+            'RGBD/ProximityMaxPaths': '3',
+            'RGBD/GoalReachedRadius': '0.5',
+            'RGBD/PlanVirtualLinks': 'true',
+            
+            # Bayes Filter
+            'Bayes/PredictionLC': '0.1 0.36 0.30 0.16 0.062 0.0151 0.00255 0.000324 0.0000324 0.00000242 0.0000001',
+            'Bayes/VirtualPlacePriorThr': '0.9',
+            
+            # Performance optimizations
+            'Rtabmap/DetectionRate': '1',  # Process every frame
+            'Rtabmap/TimeThr': '0',  # No time limit
+            'Rtabmap/MemoryThr': '0',  # No memory limit for mapping
+            'Rtabmap/LoopThr': '0.11',  # Loop closure threshold
+            'Rtabmap/CreateIntermediateNodes': 'false',
+            'Rtabmap/StartNewMapOnLoopClosure': 'false',
+    }
+
+    remappings = [
+        ('rgb/image',       '/UGV/camera_rgb/image_color'),
+        ('depth/image',     '/UGV/camera_depth/image'),
+        ('rgb/camera_info', '/UGV/camera_rgb/camera_info'),
+        ('scan_cloud',      '/UGV/lidar_3d/point_cloud'),
+        ('imu',             '/imu/data'),
+        # Uncomment if using filtered odometry from robot_localization
+        # ('odom',            '/odometry/filtered')
+    ]
+
+    config_rviz = os.path.join(
+        get_package_share_directory('rtabmap_demos'),
+        'config',
+        'demo_robot_mapping.rviz'
+    )
+
+    # Create map_data directory if it doesn't exist
+    map_dir = "/home/suriya/ros2_ws/src/autonomous_navigation/map_data"
+    os.makedirs(map_dir, exist_ok=True)
+    
+    database_path = f"{map_dir}/rtabmap_sim_{now_}.db"
+
+    return LaunchDescription([
+
+        DeclareLaunchArgument(
+            'rtabmap_viz',
+            default_value='true',
+            description='Launch RTAB-Map UI for visualization'
+        ),
+        
+        DeclareLaunchArgument(
+            'rviz',
+            default_value='false',
+            description='Launch RViz2 for visualization'
+        ),
+        
+        DeclareLaunchArgument(
+            'localization',
+            default_value='false',
+            description='Launch in localization mode (vs mapping mode)'
+        ),
+        
+        DeclareLaunchArgument(
+            'rviz_cfg',
+            default_value=config_rviz,
+            description='Path to RViz configuration file'
+        ),
+        
+        DeclareLaunchArgument(
+            'database_path',
+            default_value=database_path,
+            description='Path to RTAB-Map database file'
+        ),
+
+        # Set simulation time
+        SetParameter(name='use_sim_time', value=True),
+
+        # RGB-D + LiDAR synchronization node
+        Node(
+            package='rtabmap_sync',
+            executable='rgbd_sync',
+            output='screen',
+            parameters=[parameters],
+            remappings=remappings,
+            arguments=['--ros-args', '--log-level', 'info']
+        ),
+
+        # RTAB-Map SLAM node - Mapping mode
+        Node(
+            condition=UnlessCondition(localization),
+            package='rtabmap_slam',
+            executable='rtabmap',
+            output='screen',
+            parameters=[
+                parameters,
+                {'database_path': LaunchConfiguration('database_path')}
+            ],
+            remappings=remappings,
+            arguments=[
+                '--delete_db_on_start',  # Start fresh mapping
+                '--ros-args', '--log-level', 'info'
+            ]
+        ),
+
+        # RTAB-Map SLAM node - Localization mode
+        Node(
+            condition=IfCondition(localization),
+            package='rtabmap_slam',
+            executable='rtabmap',
+            output='screen',
+            parameters=[
+                parameters,
+                {
+                    'database_path': LaunchConfiguration('database_path'),
+                    'Mem/IncrementalMemory': 'false',  # Don't update map
+                    'Mem/InitWMWithAllNodes': 'true'  # Load all nodes for localization
+                }
+            ],
+            remappings=remappings,
+            arguments=['--ros-args', '--log-level', 'info']
+        ),
+
+        # RTAB-Map visualization GUI
+        Node(
+            package='rtabmap_viz',
+            executable='rtabmap_viz',
+            output='screen',
+            condition=IfCondition(LaunchConfiguration('rtabmap_viz')),
+            parameters=[parameters],
+            remappings=remappings
+        ),
+
+        # RViz2 for additional visualization
+        Node(
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            output='screen',
+            condition=IfCondition(LaunchConfiguration('rviz')),
+            arguments=['-d', LaunchConfiguration('rviz_cfg')]
+        ),
+    ])

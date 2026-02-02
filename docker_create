@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Start Webots simulation with Docker Compose
+# Automatically uses CPU or GPU profile based on setup detection
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "=========================================="
+echo "  Starting Webots Simulation"
+echo "=========================================="
+echo ""
+
+# Check if setup has been run
+if [ ! -f ".docker_profile" ]; then
+    echo "Error: Setup not completed!"
+    echo "Please run ./docker_setup first"
+    exit 1
+fi
+
+# Read the profile (cpu or gpu)
+PROFILE=$(cat .docker_profile)
+
+echo "Configuration: $PROFILE mode"
+echo ""
+
+# Enable X11 forwarding
+xhost +local:docker 2>/dev/null || echo "⚠ Warning: Could not set xhost"
+
+# Check if workspace is built
+if [ ! -d "ros2_ws/install" ]; then
+    echo "⚠ Warning: ROS2 workspace not built!"
+    echo "Run ./docker_build first"
+    read -p "Do you want to build now? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        if [ -f "./docker_build" ]; then
+            ./docker_build
+        else
+            echo "docker_build script not found"
+            exit 1
+        fi
+    else
+        exit 1
+    fi
+fi
+
+echo "Launching containers with $PROFILE profile..."
+echo ""
+
+# Start services with the appropriate profile
+docker compose --profile "$PROFILE" create
+
+if [ $? -eq 0 ]; then
+    echo ""
+    echo "=========================================="
+    echo "  Simulation Started Successfully!"
+    echo "=========================================="
+    echo ""
+    echo "Running containers:"
+    docker compose ps
+    echo ""
+    echo "Useful commands:"
+    echo "  - View logs: docker compose logs -f"
+    echo "  - View specific container: docker compose logs -f webots_world"
+    echo "  - Stop simulation: ./docker_destroy"
+    echo ""
+else
+    echo ""
+    echo "Failed to start containers"
+    echo "Check the logs with: docker compose logs"
+    exit 1
+fi

@@ -1,0 +1,238 @@
+ekf_filter_node:
+    ros__parameters:
+
+        # ============================================
+        # BASIC CONFIGURATION
+        # ============================================
+        
+        # How often the filter publishes (Hz) - 30 Hz = 30 times per second
+        frequency: 30.0
+        
+        # If no sensor data received for this long (seconds), consider it lost
+        sensor_timeout: 0.1
+        
+        # Set to true if robot only moves in 2D plane (ignores z, roll, pitch)
+        # Set to false for full 3D motion estimation
+        two_d_mode: false
+        
+        # Time offset to compensate for delays in TF transformations (usually 0.0)
+        transform_time_offset: 0.0
+        transform_timeout: 0.0
+        
+        # Publish the corrected odometry after fusion
+        permit_corrected_publication: true
+        
+        # Whether to publish acceleration in output message
+        publish_acceleration: false
+        
+        # Should the filter publish TF transforms?
+        publish_tf: true
+        
+        # ============================================
+        # FRAME DEFINITIONS
+        # ============================================
+        
+        # map_frame: map              # Global fixed reference frame
+        odom_frame: odom            # Local reference frame (drift-free locally)
+        base_link_frame: base_link  # Robot's body frame
+        world_frame: odom           # Which frame to use as "world" (odom for local SLAM)
+
+        ########################################################################################################################
+        ########################################### ODOM SOURCE 0 - (Wheel Encoders) ###########################################
+        ########################################################################################################################
+
+        # Topic name for wheel encoder odometry
+        odom0: /odom
+
+        # Which measurements to fuse from this sensor
+        # Order: [x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az]
+        # true = use this measurement, false = ignore it
+        
+        odom0_config: [true,  true,  false,    # Use X, Y position; ignore Z
+                       false, false, true,    # Ignore roll, pitch, yaw (orientation)
+                       true, false, false,   
+                       false, false, true,     
+                       false, false, false]    # Ignore accelerations
+
+        # Number of messages to buffer (larger = more latency tolerance, but slower)
+        odom0_queue_size: 2
+        
+        # TCP optimization (false = allow batching for efficiency)
+        odom0_nodelay: false
+
+        # Convert absolute pose to velocity? (false = use absolute positions)
+        odom0_differential: false
+        
+        # Is this measurement relative to previous or absolute?
+        odom0_relative: false
+
+        # Outlier rejection thresholds (Mahalanobis distance)
+        # Higher = accept more outliers, Lower = stricter filtering
+        odom0_pose_rejection_threshold: 5.0      # For position measurements
+        odom0_twist_rejection_threshold: 1.0     # For velocity measurements
+
+        ########################################################################################################################
+        ########################################### ODOM SOURCE 1 - (2D LIDAR ODOM) ############################################
+        ########################################################################################################################
+
+        # odom1: /scan/odom
+        
+        # odom1_config: [true,  true,  false,    # Use X, Y position from 2D lidar
+        #                false, false, true,     # Use yaw orientation
+        #                false, false, false,    # Ignore velocities
+        #                false, false, false,    # Ignore angular velocities
+        #                false, false, false]    # Ignore accelerations
+        
+        # # Differential mode: false = absolute pose, true = convert to velocity
+        # odom1_differential: false
+        
+        # # Relative mode: true = measurement is relative to previous frame
+        # odom1_relative: false
+        
+        # odom1_queue_size: 5
+        # odom1_pose_rejection_threshold: 2.0
+        # odom1_twist_rejection_threshold: 0.2
+        # odom1_nodelay: false
+
+        ########################################################################################################################
+        ########################################### ODOM SOURCE 2 - (3D LIDAR ODOM) ############################################
+        ########################################################################################################################
+
+        odom2: /odom_3d
+        
+        odom2_config: [true,  true,  true,     # Use X, Y, Z position from 3D lidar
+                       true,  true,  true,     # Use roll, pitch, yaw orientation
+                       false, false, false,    # Ignore velocities
+                       false, false, false,    # Ignore angular velocities
+                       false, false, false]    # Ignore accelerations
+        
+        odom2_differential: false
+        odom2_relative: false
+        odom2_queue_size: 5
+        odom2_pose_rejection_threshold: 2.0
+        odom2_twist_rejection_threshold: 0.2
+        odom2_nodelay: false
+
+        ########################################################################################################################
+        ######################################## ODOM SOURCE 3 - (Camera/Visual Odom) ##########################################
+        ########################################################################################################################
+
+        # odom3: /visual_odom
+        
+        # odom3_config: [true,  true,  true,     # Use X, Y, Z position from camera
+        #                true,  true,  true,     # Use roll, pitch, yaw orientation
+        #                false, false, false,    # Ignore velocities
+        #                false, false, false,    # Ignore angular velocities
+        #                false, false, false]    # Ignore accelerations
+        
+        # odom3_differential: false
+        # odom3_relative: false
+        # odom3_queue_size: 5
+        # odom3_pose_rejection_threshold: 2.0
+        # odom3_twist_rejection_threshold: 0.2
+        # odom3_nodelay: false
+
+        ########################################################################################################################
+        ############################################### IMU SOURCE 0 ###########################################################
+        ########################################################################################################################
+
+        imu0: /imu/data
+        
+        # IMU provides orientation and angular velocity, NOT position
+        imu0_config: [false, false, false,     # IMU doesn't provide X, Y, Z position
+                      false,  false,  true,      # Use roll, pitch, yaw orientation
+                      false, false, false,     # Ignore linear velocities
+                      false,  false,  true,      # Use angular velocities (gyroscope)
+                      false,  false,  false]      # Use linear accelerations (accelerometer)
+        
+        imu0_nodelay: false
+        imu0_differential: true
+        
+        # IMU measurements are relative to its previous state
+        imu0_relative: false
+        
+        imu0_queue_size: 10  # Higher queue for high-frequency IMU data
+        
+        # Rejection thresholds for IMU
+        imu0_pose_rejection_threshold: 0.8
+        imu0_twist_rejection_threshold: 0.8
+        imu0_linear_acceleration_rejection_threshold: 0.8
+        
+        # Remove gravity from acceleration measurements (9.81 m/s² downward)
+        imu0_remove_gravitational_acceleration: true
+
+        ########################################################################################################################
+        ############################################# CONTROL INPUT (Optional) #################################################
+        ########################################################################################################################
+
+        # Use control commands (like cmd_vel) to improve prediction?
+        use_control: false  # Set to true if you publish control commands
+        
+        stamped_control: false
+        control_timeout: 0.2
+        
+        # Which control inputs to use: [vx, vy, vz, vroll, vpitch, vyaw]
+        control_config: [true, false, false, false, false, true]
+        
+        # Maximum acceleration/deceleration limits for control smoothing
+        acceleration_limits: [1.3, 0.0, 0.0, 0.0, 0.0, 3.2]
+        deceleration_limits: [1.3, 0.0, 0.0, 0.0, 0.0, 4.5]
+        acceleration_gains: [0.8, 0.0, 0.0, 0.0, 0.0, 0.9]
+        deceleration_gains: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+
+        ########################################################################################################################
+        ############################################# COVARIANCE MATRICES ######################################################
+        ########################################################################################################################
+
+        # Process noise: How much the model trusts its motion prediction
+        # Higher values = less trust in prediction, more trust in sensors
+        # This is a 15x15 diagonal matrix for [x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az]
+        
+        process_noise_covariance: [0.05, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.05, 0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.06, 0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.03, 0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.03, 0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.06, 0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.025, 0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.025, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.04, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.01, 0.0,  0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.01, 0.0,  0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.02, 0.0,  0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.01, 0.0,  0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.01, 0.0,
+                                   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,   0.0,   0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.015]
+
+        # Initial uncertainty: How confident are we about the starting position?
+        # Very small values (1e-9) = very confident about initial position
+        initial_estimate_covariance: [1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,  0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9, 0.0,
+                                      0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-9]
+        
+        ########################################################################################################################
+        ################################################## DEBUG OPTIONS #######################################################
+        ########################################################################################################################
+        
+        # Print diagnostic information to console and publish to /diagnostics topic
+        print_diagnostics: true
+        
+        # Enable verbose debug output
+        debug: false
+        
+        # If debug enabled, write output to this file
+        debug_out_file: /tmp/ekf_debug.txt
+
+        use_sim_time: True

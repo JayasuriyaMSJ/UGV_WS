@@ -1,0 +1,4 @@
+{
+    "cmake.sourceDirectory": "/home/suriya/ros2_ws/src/webots_platform",
+    "C_Cpp.errorSquiggles": "enabled"
+}

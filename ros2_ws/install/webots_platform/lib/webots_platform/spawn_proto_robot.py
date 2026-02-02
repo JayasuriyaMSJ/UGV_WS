@@ -1,0 +1,1 @@
+/ros2_ws/src/webots_platform/scripts/spawn_proto_robot.py

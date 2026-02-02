@@ -1,0 +1,484 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/plants/protos/PottedTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Oak.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Pine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/SimpleBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/lights/protos/CeilingLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/chairs/protos/OfficeChair.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/paintings/protos/PortraitPainting.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/paintings/protos/LandscapePainting.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/tables/protos/Desk.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/velodyne/protos/VelodyneVLP-16.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto"
+IMPORTABLE EXTERNPROTO "../protos/UGV.proto"
+
+
+WorldInfo {
+  info [
+    "IT Office Environment"
+  ]
+}
+Viewpoint {
+  orientation -0.0011146841156599967 0.07074447502710843 -0.997493847967225 2.6810910655743627
+  position 2.8360196221306686 2.2798802942887417 0.5125529152338552
+}
+
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+PottedTree {
+  translation 1.75 9.65 0
+  rotation 0 0 1 1.5708
+  name "potted tree(5)"
+}
+PottedTree {
+  translation -1.79 9.62 0.01
+  rotation 0 0 1 1.5708
+  name "potted tree(8)"
+}
+Floor {
+  translation 15 7 0
+  size 200 200
+  tileSize 2 2
+  appearance PBRAppearance {
+    baseColor 0.7 0.7 0.7
+    roughness 0.5
+    metalness 0
+  }
+}
+Desk {
+  translation 6.44 -5.03 0
+  name "desk(1)"
+}
+OilBarrel {
+  translation 5.22 10.69 0.58
+}
+PortraitPainting {
+  translation -4.86 -5.49 2.015
+  name "portrait painting(2)"
+}
+PortraitPainting {
+  translation 5.2 3.23 2.015
+  name "portrait painting(1)"
+}
+PortraitPainting {
+  translation 5.2 -5.49 2.015
+}
+StraightRoadSegment {
+  translation 0 10 0.1
+  rotation 0 0 1 1.5708
+  name "road_north"
+  width 8
+  length 97
+}
+Desk {
+  translation -4.54 3.69 0
+}
+StraightRoadSegment {
+  translation 15 0 0.1
+  name "road_east"
+  width 8
+  length 100
+}
+SimpleBuilding {
+  translation 60 60 0
+  name "building_tower_1"
+  floorHeight 4
+  floorNumber 10
+  corners [
+    0 0
+    10 0
+    10 10
+    0 10
+  ]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -60 60 0
+  name "building_tower_2"
+  floorHeight 4
+  floorNumber 12
+  corners [
+    0 0
+    15 0
+    15 15
+    0 15
+  ]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation 6 80 0
+  name "building_tower_3"
+  floorHeight 4
+  floorNumber 15
+  corners [
+    0 0
+    20 0
+    20 20
+    0 20
+  ]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -53.93 -58.4 0
+  name "building_tower_4"
+  floorHeight 4
+  floorNumber 15
+  corners [
+    0 0
+    20 0
+    20 20
+    0 20
+  ]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation 68.18 -58.39 0
+  name "building_tower_5"
+  floorHeight 4
+  floorNumber 15
+  corners [
+    0 0
+    20 0
+    20 20
+    0 20
+  ]
+  wallType "glass building"
+}
+SimpleBuilding {
+  translation -32.9 -35.3 0
+  name "building_extra_1"
+  floorNumber 4
+  corners [
+    0 0
+    20 0
+    20 10
+    0 10
+  ]
+}
+SimpleBuilding {
+  translation 40 -60 0
+  name "building_extra_2"
+  floorNumber 5
+  corners [
+    0 0
+    12 0
+    12 12
+    0 12
+  ]
+}
+SimpleBuilding {
+  translation 80 -20 0
+  name "building_extra_3"
+  corners [
+    0 0
+    15 0
+    15 8
+    0 8
+  ]
+}
+SimpleBuilding {
+  translation -36.3 10 0
+  name "building_extra_4"
+  floorHeight 5
+  floorNumber 2
+  corners [
+    0 0
+    10 0
+    10 20
+    0 20
+  ]
+}
+SimpleBuilding {
+  translation 20 -80 0
+  name "building_extra_5"
+  floorHeight 4
+  floorNumber 6
+  corners [
+    0 0
+    15 0
+    15 15
+    0 15
+  ]
+}
+SimpleBuilding {
+  translation -52.9 -11.89 0.000180814
+  name "building_extra_6"
+  floorHeight 5
+  floorNumber 2
+  corners [
+    0 0
+    10 0
+    10 20
+    0 20
+  ]
+}
+SimpleBuilding {
+  translation 35.2 28.8506 -0.0396394
+  name "building_extra_7"
+  floorHeight 5
+  floorNumber 2
+  corners [
+    0 0
+    10 0
+    10 20
+    0 20
+  ]
+}
+Oak {
+  translation 20 20 0
+  name "oak1"
+}
+Oak {
+  translation -20 -20 0
+  name "oak2"
+}
+Oak {
+  translation 50 50 0
+  name "oak3"
+}
+Pine {
+  translation 5.83 19.67 0
+  name "pine1"
+}
+Pine {
+  translation 5.83 29.67 0
+  name "pine2"
+}
+Pine {
+  translation 5.83 39.67 0
+  name "pine3"
+}
+Pine {
+  translation 5.83 49.67 0
+  name "pine4"
+}
+Pine {
+  translation 5.83 59.67 0
+  name "pine5"
+}
+Pine {
+  translation -8.5 20.8 0
+  name "pine6"
+}
+Pine {
+  translation -8.5 30.8 0
+  name "pine7"
+}
+Pine {
+  translation -8.5 40.8 0
+  name "pine8"
+}
+Pine {
+  translation -8.5 50.8 0
+  name "pine9"
+}
+Pine {
+  translation -8.5 60.8 0
+  name "pine10"
+}
+Pine {
+  translation -8.5 70.8 0
+  name "pine11"
+}
+Pine {
+  translation -50 50 0
+  name "pine12"
+}
+Pine {
+  translation 22.8 -7.1 0
+  name "pine13"
+}
+Pine {
+  translation 30 -7.1 0
+  name "pine14"
+}
+Pine {
+  translation 40 -7.1 0
+  name "pine15"
+}
+Pine {
+  translation 50 -7.1 0
+  name "pine16"
+}
+Pine {
+  translation 60 -7.1 0
+  name "pine17"
+}
+Pine {
+  translation 70 -7.1 0
+  name "pine18"
+}
+Pine {
+  translation 80 -7.1 0
+  name "pine19"
+}
+Pine {
+  translation 14.1 -50 0
+  name "pine20"
+}
+Pine {
+  translation 45 -50 0
+  name "pine21"
+}
+Pine {
+  translation 30 6.5 0
+  name "pine22"
+}
+Pine {
+  translation 20 6.5 0
+  name "pine23"
+}
+Pine {
+  translation 40 6.5 0
+  name "pine24"
+}
+Pine {
+  translation 90 6.5 0
+  name "pine25"
+}
+Pine {
+  translation 50 6.5 0
+  name "pine26"
+}
+Pine {
+  translation 60 6.5 0
+  name "pine27"
+}
+Pine {
+  translation 80 6.5 0
+  name "pine28"
+}
+Pine {
+  translation 70 6.5 0
+  name "pine29"
+}
+Pine {
+  translation 30 -40 0
+  name "pine30"
+}
+Pine {
+  translation -30 60 0
+  name "pine31"
+}
+Wall {
+  translation 0 -10 0
+  name "wall_shell_south"
+  size 30 0.2 3
+}
+Wall {
+  translation -8.56 10 0
+  name "wall_shell_north_1"
+  size 13 0.2 3
+}
+Wall {
+  translation 8.56 10 0
+  name "wall_shell_north_2"
+  size 13 0.2 3
+}
+Wall {
+  translation -15 6 0
+  rotation 0 0 1 1.5708
+  name "wall_shell_west_1"
+  size 8 0.2 3
+}
+Wall {
+  translation -15 -6 0
+  rotation 0 0 1 1.5708
+  name "wall_shell_west_2"
+  size 8 0.2 3
+}
+Wall {
+  translation 15 6 0
+  rotation 0 0 1 1.5708
+  name "wall_shell_east_1"
+  size 8 0.2 3
+}
+Wall {
+  translation 15 -6 0
+  rotation 0 0 1 1.5708
+  name "wall_shell_east_2"
+  size 8 0.2 3
+}
+Wall {
+  translation -10 0 0
+  name "wall_div_center_left"
+  size 10 0.2 3
+}
+Wall {
+  translation 10 0 0
+  name "wall_div_center_right"
+  size 10 0.2 3
+}
+Wall {
+  translation -5 -5.95 0
+  rotation 0 0 1 1.5708
+  name "wall_div_col_1"
+  size 8 0.2 3
+}
+Wall {
+  translation -5 6.07 0
+  rotation 0 0 1 1.5708
+  name "wall_div_col_4"
+  size 8 0.2 3
+}
+Wall {
+  translation 5 5.87 0
+  rotation 0 0 1 1.5708
+  name "wall_div_col_2"
+  size 8 0.2 3
+}
+LandscapePainting {
+  translation 4.91 5.19 1.86
+  rotation 0 0 1 3.14159
+}
+Wall {
+  translation 5 -5.92 0
+  rotation 0 0 1 1.5708
+  name "wall_div_col_3"
+  size 8 0.2 3
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 0.5
+  location -10 5 2.5
+  radius 10
+  castShadows TRUE
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 0.5
+  location 10 5 2.5
+  radius 10
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 0.5
+  location -10 -5 2.5
+  radius 10
+}
+PointLight {
+  attenuation 0 0 1
+  intensity 0.5
+  location 10 -5 2.5
+  radius 10
+}
+CeilingLight {
+  translation 0 0 2.9
+  pointLightIntensity 0.2
+}
+OfficeChair {
+  hidden linearVelocity_0 -1.0004881527953435e-05 2.443623149175569e-07 -6.223934643313665e-05
+  hidden angularVelocity_0 -1.7174341337855082e-06 -7.031446680556332e-05 -4.75488382706012e-12
+  translation 5.750007322286629 -5.030000117861442 -0.0008796501349579988
+  rotation -0.024111023210056086 -0.9997092752067441 0.00015370546655352088 0.0008689658280992736
+}
+
