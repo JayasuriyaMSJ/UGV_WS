@@ -6,6 +6,10 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "sensor_msgs/msg/imu.hpp"
+#include "sensor_msgs/msg/point_cloud2.hpp"
+#include "sensor_msgs/msg/laser_scan.hpp"
+#include "sensor_msgs/msg/image.hpp"
+#include "sensor_msgs/msg/camera_info.hpp"
 #include <nav_msgs/msg/odometry.hpp>
 #include "rosgraph_msgs/msg/clock.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
@@ -32,11 +36,30 @@ namespace ugv_driver
         void cmdVelCallback(const geometry_msgs::msg::Twist::SharedPtr msg);
         void updateOdometry(const rclcpp::Time &current_time);
         void publishIMU(const rclcpp::Time &current_time);
+        void publishLidar3D(const rclcpp::Time &current_time);
+        void publishLidar2D(const rclcpp::Time &current_time);
+        void publishCamera(const rclcpp::Time &current_time);
+        void publishDepthCamera(const rclcpp::Time &current_time);
 
         rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_sub_;
         rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub_;
         rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
+
+        // 3D Lidar Publisher
+        rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr lidar_3d_pub_;
+
+        // 2D Lidar 
+        rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr lidar_2d_pub_;
+
+        // Camera publishers -- RGB
+        rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr camera_rgb_pub_;
+        rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr camera_rgb_info_pub_;
+
+        // Camera publishers -- RGBD
+        rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr camera_depth_pub_;
+        rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr camera_depth_info_pub_;
+
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 
         geometry_msgs::msg::Twist cmd_vel_;
@@ -53,6 +76,14 @@ namespace ugv_driver
         WbDeviceTag imu_;
         WbDeviceTag gyro_;          // NEW: Gyroscope
         WbDeviceTag accelerometer_; // NEW: Accelerometer
+
+        // Webots devices - LiDAR
+        WbDeviceTag lidar_3d_;  // Velodyne VLP-16
+        WbDeviceTag lidar_2d_;  // SICK 2D LiDAR
+        
+        // Webots devices - Cameras
+        WbDeviceTag camera_rgb_;
+        WbDeviceTag camera_depth_;
 
         // Robot parameters
         double wheel_radius_ = 0.1;

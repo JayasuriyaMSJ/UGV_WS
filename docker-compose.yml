@@ -11,6 +11,7 @@ services:
       - webots_network
     volumes:
       - ./ros2_ws:/ros2_ws
+      - /dev/dri:/dev/dri
       - /tmp/.X11-unix:/tmp/.X11-unix
       - webots_ipc:/tmp/webots
     environment:
@@ -75,7 +76,7 @@ services:
     volumes:
       - ./ros2_ws:/ros2_ws
       - webots_ipc:/tmp/webots
-    environment:
+    environment: 
       - ROBOT_NAME=ugv_01
       - ROBOT_X=0
       - ROBOT_Y=0
