@@ -1,6 +1,6 @@
 # Quick Start Guide - Webots ROS2 Docker
 
-## For Team Members - 3 Simple Steps
+## 3 Simple Steps
 
 ### Step 1: Install Docker (if not already installed)
 ```bash
