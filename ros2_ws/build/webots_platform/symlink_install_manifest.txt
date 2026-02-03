@@ -21,6 +21,7 @@
 /ros2_ws/install/webots_platform/share/webots_platform//config/ugv_mod.urdf
 /ros2_ws/install/webots_platform/share/webots_platform//config/ugv_mode.urdf
 /ros2_ws/install/webots_platform/share/webots_platform//rviz/webot_viz.rviz
+/ros2_ws/install/webots_platform/share/webots_platform//controllers/resource/dummy.txt
 /ros2_ws/install/webots_platform/share/webots_platform//protos/UGV.proto
 /ros2_ws/install/webots_platform/share/webots_platform/environment/library_path.sh
 /ros2_ws/install/webots_platform/share/webots_platform/environment/library_path.dsv

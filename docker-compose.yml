@@ -84,8 +84,12 @@ services:
       - "9091:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
+      - /dev/dri:/dev/dri
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - webots_ipc:/tmp/webots
     environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=1
       - ROBOT_NAME=ugv_01
       - ROBOT_X=0
@@ -115,8 +119,12 @@ services:
       - "9092:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
+      - /dev/dri:/dev/dri
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - webots_ipc:/tmp/webots
     environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=2
       - ROBOT_NAME=ugv_02
       - ROBOT_X=2
@@ -147,8 +155,12 @@ services:
       - "9093:9090"
     volumes:
       - ./ros2_ws:/ros2_ws
+      - /dev/dri:/dev/dri
+      - /tmp/.X11-unix:/tmp/.X11-unix
       - webots_ipc:/tmp/webots
     environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=3
       - ROBOT_NAME=ugv_03
       - ROBOT_X=-2

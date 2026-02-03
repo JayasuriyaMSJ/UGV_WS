@@ -45,7 +45,15 @@ def launch_setup(context, *args, **kwargs):
         parameters=[{
             'robot_description': urdf_path,
             'use_sim_time': True,
-            'set_robot_state_publisher': False
+            'set_robot_state_publisher': False,
+
+            # ===== DISABLE AUTO-PUBLISHERS =====
+            'publish_camera': False,    
+            'publish_range_finder': False, 
+            'publish_lidar': False,       
+            # Keep only what you want auto-published:
+            'publish_gps': True,        
+            'publish_imu': False,         
         }],
         output = 'screen'
     )

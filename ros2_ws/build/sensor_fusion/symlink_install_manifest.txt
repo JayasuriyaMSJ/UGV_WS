@@ -1,4 +1,5 @@
 /ros2_ws/install/sensor_fusion/share/sensor_fusion//launch/ekf_test.launch.py
+/ros2_ws/install/sensor_fusion/share/sensor_fusion//resource/dummy.txt
 /ros2_ws/install/sensor_fusion/share/sensor_fusion//config/Figure_1.png
 /ros2_ws/install/sensor_fusion/share/sensor_fusion//config/sensor_fusion.png
 /ros2_ws/install/sensor_fusion/share/sensor_fusion//params/ekf_params.yaml

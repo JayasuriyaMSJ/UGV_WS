@@ -59,7 +59,7 @@ namespace ugv_driver
         // Camera publishers -- RGBD
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr camera_depth_pub_;
         rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr camera_depth_info_pub_;
-
+        rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clock_pub_;
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 
         geometry_msgs::msg::Twist cmd_vel_;
@@ -96,6 +96,8 @@ namespace ugv_driver
         double last_left_position_ = 0.0;
         double last_right_position_ = 0.0;
         std::string frame_prefix_;
+        std::string robot_name_;
+        std::string topic_prefix_;
 
         // IMU state - NEW
         double last_angular_z_ = 0.0;

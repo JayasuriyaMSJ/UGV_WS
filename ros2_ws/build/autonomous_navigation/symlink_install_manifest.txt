@@ -1,8 +1,10 @@
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_localization.launch.py
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping.launch.py
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//launch/rtabmap_mapping_bkpup
+/ros2_ws/install/autonomous_navigation/share/autonomous_navigation//resource/dummy.txtr
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/mapping_rqt.png
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation//config/nav2.yaml
+/ros2_ws/install/autonomous_navigation/share/autonomous_navigation//params/dummy.txtr
 /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/package_run_dependencies/autonomous_navigation
 /ros2_ws/install/autonomous_navigation/share/ament_index/resource_index/parent_prefix_path/autonomous_navigation
 /ros2_ws/install/autonomous_navigation/share/autonomous_navigation/environment/ament_prefix_path.sh
