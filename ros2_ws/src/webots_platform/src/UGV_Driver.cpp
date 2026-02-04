@@ -556,9 +556,9 @@ namespace ugv_driver
         scan_msg.header.stamp = current_time;
         scan_msg.header.frame_id = frame_prefix_ + "lidar_2d"; // match URDF link name
 
-        scan_msg.angle_min = -fov / 2.0;
-        scan_msg.angle_max = fov / 2.0;
-        scan_msg.angle_increment = fov / (horizontal_res - 1);
+        scan_msg.angle_min = fov / 2.0;
+        scan_msg.angle_max = -fov / 2.0;
+        scan_msg.angle_increment = -fov / (horizontal_res - 1);
         scan_msg.time_increment = 0.0;
         scan_msg.scan_time = timestep_ms_ / 1000.0;
         scan_msg.range_min = min_range;
