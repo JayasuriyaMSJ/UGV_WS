@@ -1,1 +1,0 @@
-/ros2_ws/src/webots_platform/scripts/ugv_controller.py

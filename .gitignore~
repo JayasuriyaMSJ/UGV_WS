@@ -45,6 +45,3 @@ docker-compose.override.yml
 
 # Keys
 ssh_key
-
-# Docker System Profile
-.docker_profile

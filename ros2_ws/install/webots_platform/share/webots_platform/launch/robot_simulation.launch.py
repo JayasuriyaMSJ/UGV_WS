@@ -1,1 +1,0 @@
-/ros2_ws/src/webots_platform/launch/robot_simulation.launch.py
