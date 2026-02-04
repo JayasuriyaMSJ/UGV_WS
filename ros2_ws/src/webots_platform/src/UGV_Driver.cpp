@@ -216,7 +216,7 @@ namespace ugv_driver
             rclcpp::QoS(10));
 
         joint_state_pub_ = node->create_publisher<sensor_msgs::msg::JointState>(
-            topic_prefix_ + "joint_states",
+             "joint_states",
             rclcpp::QoS(10));
 
         lidar_3d_pub_ = node->create_publisher<sensor_msgs::msg::PointCloud2>(
@@ -371,6 +371,8 @@ namespace ugv_driver
         t.header.stamp = current_time;
         t.header.frame_id = frame_prefix_ + "odom";
         t.child_frame_id = frame_prefix_ + "base_link";
+        //std::cout<<"Frame ID: "<<t.header.frame_id<<", Child Frame ID: "<<t.child_frame_id<<std::endl;
+        //std::cout<<"frame_prefix_: "<<frame_prefix_<<std::endl;
 
         t.transform.translation.x = x_;
         t.transform.translation.y = y_;
@@ -379,18 +381,23 @@ namespace ugv_driver
 
         tf_broadcaster_->sendTransform(t);
 
-        // ── Joint states ──
-        sensor_msgs::msg::JointState js;
-        js.header.stamp = current_time;
-        js.name = {"left_front_motor", "right_front_motor",
-                   "left_rear_motor", "right_rear_motor"};
-        js.position = {
-            wb_position_sensor_get_value(left_front_sensor_),
-            wb_position_sensor_get_value(right_front_sensor_),
-            wb_position_sensor_get_value(left_rear_sensor_),
-            wb_position_sensor_get_value(right_rear_sensor_)};
-        joint_state_pub_->publish(js);
+  // Publish Joint States for RViz wheel visualization
+    sensor_msgs::msg::JointState js;
+    js.header.stamp = current_time;
+    js.name = {"left_front_motor", "right_front_motor", "left_rear_motor", "right_rear_motor"};
+    js.position.resize(4);
+    js.position[0] = wb_position_sensor_get_value(left_front_sensor_);
+    js.position[1] = wb_position_sensor_get_value(right_front_sensor_);
+    js.position[2] = wb_position_sensor_get_value(left_rear_sensor_);
+    js.position[3] = wb_position_sensor_get_value(right_rear_sensor_);
+    
+    // Sanity check: if any position is NaN, replace with 0.0 to prevent RSP errors
+    for (size_t i = 0; i < 4; ++i) {
+        if (std::isnan(js.position[i])) js.position[i] = 0.0;
     }
+    
+    joint_state_pub_->publish(js);
+}
 
     void UGVDriver::publishIMU(const rclcpp::Time &current_time)
     {
