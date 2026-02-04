@@ -1,10 +1,45 @@
-
-# Logs
-*.log
+# --------------------
+# ROS 2 / Colcon
+# --------------------
+ros2_ws/build/
+ros2_ws/install/
 ros2_ws/log/
 
-# Build artifacts
-ros2_ws/build/
+# --------------------
+# CMake / C++
+# --------------------
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.so
+*.a
 
-ros2_ws/install/
+# --------------------
+# Python
+# --------------------
+__pycache__/
+*.pyc
+*.pyo
+
+# --------------------
+# Webots
+# --------------------
+*.wbo
+*.wbproj
+*.wbt~ 
+
+# --------------------
+# Docker
+# --------------------
+*.tar
+docker-compose.override.yml
+
+# --------------------
+# IDE / OS
+# --------------------
+.vscode/
+.idea/
+.DS_Store
 

@@ -51,7 +51,8 @@ namespace ugv_driver
             std::string ns = node_->get_namespace();
             if (ns != "/")
             {
-                if (ns.front() == '/') ns.erase(0, 1);
+                if (ns.front() == '/')
+                    ns.erase(0, 1);
                 robot_name_ = ns;
             }
             else
@@ -93,10 +94,14 @@ namespace ugv_driver
         left_rear_sensor_ = wb_robot_get_device("left_rear_sensor");
         right_rear_sensor_ = wb_robot_get_device("right_rear_sensor");
 
-        if (left_front_sensor_)  wb_position_sensor_enable(left_front_sensor_, timestep);
-        if (right_front_sensor_) wb_position_sensor_enable(right_front_sensor_, timestep);
-        if (left_rear_sensor_)   wb_position_sensor_enable(left_rear_sensor_, timestep);
-        if (right_rear_sensor_)  wb_position_sensor_enable(right_rear_sensor_, timestep);
+        if (left_front_sensor_)
+            wb_position_sensor_enable(left_front_sensor_, timestep);
+        if (right_front_sensor_)
+            wb_position_sensor_enable(right_front_sensor_, timestep);
+        if (left_rear_sensor_)
+            wb_position_sensor_enable(left_rear_sensor_, timestep);
+        if (right_rear_sensor_)
+            wb_position_sensor_enable(right_rear_sensor_, timestep);
 
         // Velocity control mode
         wb_motor_set_position(left_front_motor_, INFINITY);
@@ -243,8 +248,6 @@ namespace ugv_driver
             rclcpp::QoS(10));
 
         std::cout << "=== UGVDriver::init() complete ===" << std::endl;
-
-        std::cout << "=== UGVDriver::init() complete ===" << std::endl;
         std::cout << "Topics will publish under: /" << topic_prefix_ << std::endl;
     }
 
@@ -265,10 +268,12 @@ namespace ugv_driver
             {
                 last_left_position_ =
                     (wb_position_sensor_get_value(left_front_sensor_) +
-                     wb_position_sensor_get_value(left_rear_sensor_)) / 2.0;
+                     wb_position_sensor_get_value(left_rear_sensor_)) /
+                    2.0;
                 last_right_position_ =
                     (wb_position_sensor_get_value(right_front_sensor_) +
-                     wb_position_sensor_get_value(right_rear_sensor_)) / 2.0;
+                     wb_position_sensor_get_value(right_rear_sensor_)) /
+                    2.0;
             }
             return;
         }
@@ -283,20 +288,22 @@ namespace ugv_driver
 
         double left_pos =
             (wb_position_sensor_get_value(left_front_sensor_) +
-             wb_position_sensor_get_value(left_rear_sensor_)) / 2.0;
+             wb_position_sensor_get_value(left_rear_sensor_)) /
+            2.0;
         double right_pos =
             (wb_position_sensor_get_value(right_front_sensor_) +
-             wb_position_sensor_get_value(right_rear_sensor_)) / 2.0;
+             wb_position_sensor_get_value(right_rear_sensor_)) /
+            2.0;
 
         if (std::isnan(left_pos) || std::isnan(right_pos))
         {
             return;
         }
 
-        double delta_left  = (left_pos  - last_left_position_)  * wheel_radius_;
+        double delta_left = (left_pos - last_left_position_) * wheel_radius_;
         double delta_right = (right_pos - last_right_position_) * wheel_radius_;
 
-        double delta_s     = (delta_right + delta_left) / 2.0;
+        double delta_s = (delta_right + delta_left) / 2.0;
         double delta_theta = (delta_right - delta_left) / track_width_;
 
         double theta_old = theta_;
@@ -320,14 +327,14 @@ namespace ugv_driver
         double v = delta_s / dt;
         double w = delta_theta / dt;
 
-        last_left_position_  = left_pos;
+        last_left_position_ = left_pos;
         last_right_position_ = right_pos;
 
         // ── Odometry message ──
         nav_msgs::msg::Odometry odom_msg;
-        odom_msg.header.stamp    = current_time;
+        odom_msg.header.stamp = current_time;
         odom_msg.header.frame_id = frame_prefix_ + "odom";
-        odom_msg.child_frame_id  = frame_prefix_ + "base_link";
+        odom_msg.child_frame_id = frame_prefix_ + "base_link";
 
         odom_msg.pose.pose.position.x = x_;
         odom_msg.pose.pose.position.y = y_;
@@ -338,20 +345,20 @@ namespace ugv_driver
         odom_msg.pose.pose.orientation.z = sin(theta_ / 2.0);
         odom_msg.pose.pose.orientation.w = cos(theta_ / 2.0);
 
-        odom_msg.twist.twist.linear.x  = v;
-        odom_msg.twist.twist.linear.y  = 0.0;
+        odom_msg.twist.twist.linear.x = v;
+        odom_msg.twist.twist.linear.y = 0.0;
         odom_msg.twist.twist.angular.z = w;
 
         // Covariance
-        odom_msg.pose.covariance[0]  = 0.001;  // x
-        odom_msg.pose.covariance[7]  = 0.001;  // y
-        odom_msg.pose.covariance[14] = 1e6;    // z
-        odom_msg.pose.covariance[21] = 1e6;    // roll
-        odom_msg.pose.covariance[28] = 1e6;    // pitch
-        odom_msg.pose.covariance[35] = 0.01;   // yaw
+        odom_msg.pose.covariance[0] = 0.001; // x
+        odom_msg.pose.covariance[7] = 0.001; // y
+        odom_msg.pose.covariance[14] = 1e6;  // z
+        odom_msg.pose.covariance[21] = 1e6;  // roll
+        odom_msg.pose.covariance[28] = 1e6;  // pitch
+        odom_msg.pose.covariance[35] = 0.01; // yaw
 
-        odom_msg.twist.covariance[0]  = 0.001;
-        odom_msg.twist.covariance[7]  = 1e6;
+        odom_msg.twist.covariance[0] = 0.001;
+        odom_msg.twist.covariance[7] = 1e6;
         odom_msg.twist.covariance[14] = 1e6;
         odom_msg.twist.covariance[21] = 1e6;
         odom_msg.twist.covariance[28] = 1e6;
@@ -361,14 +368,14 @@ namespace ugv_driver
 
         // ── TF: odom → base_link ──
         geometry_msgs::msg::TransformStamped t;
-        t.header.stamp    = current_time;
+        t.header.stamp = current_time;
         t.header.frame_id = frame_prefix_ + "odom";
-        t.child_frame_id  = frame_prefix_ + "base_link";
+        t.child_frame_id = frame_prefix_ + "base_link";
 
         t.transform.translation.x = x_;
         t.transform.translation.y = y_;
         t.transform.translation.z = 0.0;
-        t.transform.rotation      = odom_msg.pose.pose.orientation;
+        t.transform.rotation = odom_msg.pose.pose.orientation;
 
         tf_broadcaster_->sendTransform(t);
 
@@ -376,7 +383,7 @@ namespace ugv_driver
         sensor_msgs::msg::JointState js;
         js.header.stamp = current_time;
         js.name = {"left_front_motor", "right_front_motor",
-                   "left_rear_motor",  "right_rear_motor"};
+                   "left_rear_motor", "right_rear_motor"};
         js.position = {
             wb_position_sensor_get_value(left_front_sensor_),
             wb_position_sensor_get_value(right_front_sensor_),
@@ -387,28 +394,29 @@ namespace ugv_driver
 
     void UGVDriver::publishIMU(const rclcpp::Time &current_time)
     {
-        if (!imu_) return;
+        if (!imu_)
+            return;
 
         sensor_msgs::msg::Imu imu_msg;
-        imu_msg.header.stamp    = current_time;
+        imu_msg.header.stamp = current_time;
         imu_msg.header.frame_id = frame_prefix_ + "imu";
 
         // Orientation from InertialUnit
         const double *rpy = wb_inertial_unit_get_roll_pitch_yaw(imu_);
         if (rpy)
         {
-            double roll  = rpy[0];
+            double roll = rpy[0];
             double pitch = rpy[1];
-            double yaw   = rpy[2];
+            double yaw = rpy[2];
 
-            double cy = cos(yaw * 0.5),  sy = sin(yaw * 0.5);
+            double cy = cos(yaw * 0.5), sy = sin(yaw * 0.5);
             double cp = cos(pitch * 0.5), sp = sin(pitch * 0.5);
-            double cr = cos(roll * 0.5),  sr = sin(roll * 0.5);
+            double cr = cos(roll * 0.5), sr = sin(roll * 0.5);
 
-            imu_msg.orientation.w = cr*cp*cy + sr*sp*sy;
-            imu_msg.orientation.x = sr*cp*cy - cr*sp*sy;
-            imu_msg.orientation.y = cr*sp*cy + sr*cp*sy;
-            imu_msg.orientation.z = cr*cp*sy - sr*sp*cy;
+            imu_msg.orientation.w = cr * cp * cy + sr * sp * sy;
+            imu_msg.orientation.x = sr * cp * cy - cr * sp * sy;
+            imu_msg.orientation.y = cr * sp * cy + sr * cp * sy;
+            imu_msg.orientation.z = cr * cp * sy - sr * sp * cy;
 
             imu_msg.orientation_covariance[0] = 0.01;
             imu_msg.orientation_covariance[4] = 0.01;
@@ -432,9 +440,15 @@ namespace ugv_driver
                 imu_msg.angular_velocity_covariance[4] = 0.001;
                 imu_msg.angular_velocity_covariance[8] = 0.001;
             }
-            else { imu_msg.angular_velocity_covariance[0] = -1; }
+            else
+            {
+                imu_msg.angular_velocity_covariance[0] = -1;
+            }
         }
-        else { imu_msg.angular_velocity_covariance[0] = -1; }
+        else
+        {
+            imu_msg.angular_velocity_covariance[0] = -1;
+        }
 
         // Linear acceleration from Accelerometer
         if (accelerometer_)
@@ -449,45 +463,65 @@ namespace ugv_driver
                 imu_msg.linear_acceleration_covariance[4] = 0.01;
                 imu_msg.linear_acceleration_covariance[8] = 0.01;
             }
-            else { imu_msg.linear_acceleration_covariance[0] = -1; }
+            else
+            {
+                imu_msg.linear_acceleration_covariance[0] = -1;
+            }
         }
-        else { imu_msg.linear_acceleration_covariance[0] = -1; }
+        else
+        {
+            imu_msg.linear_acceleration_covariance[0] = -1;
+        }
 
         imu_pub_->publish(imu_msg);
     }
 
     void UGVDriver::publishLidar3D(const rclcpp::Time &current_time)
     {
-        if (!lidar_3d_) return;
+        if (!lidar_3d_)
+            return;
 
         const WbLidarPoint *point_cloud = wb_lidar_get_point_cloud(lidar_3d_);
         int num_points = wb_lidar_get_number_of_points(lidar_3d_);
 
-        if (!point_cloud || num_points <= 0) return;
+        if (!point_cloud || num_points <= 0)
+            return;
 
         sensor_msgs::msg::PointCloud2 cloud_msg;
-        cloud_msg.header.stamp    = current_time;
-        cloud_msg.header.frame_id = frame_prefix_ + "lidar_3d";   // match URDF link name
+        cloud_msg.header.stamp = current_time;
+        cloud_msg.header.frame_id = frame_prefix_ + "lidar_3d"; // match URDF link name
 
-        cloud_msg.height       = 1;
-        cloud_msg.width        = num_points;
+        cloud_msg.height = 1;
+        cloud_msg.width = num_points;
         cloud_msg.is_bigendian = false;
-        cloud_msg.is_dense     = false;
+        cloud_msg.is_dense = false;
 
         sensor_msgs::msg::PointField fx, fy, fz, fi;
-        fx.name = "x"; fx.offset =  0; fx.datatype = sensor_msgs::msg::PointField::FLOAT32; fx.count = 1;
-        fy.name = "y"; fy.offset =  4; fy.datatype = sensor_msgs::msg::PointField::FLOAT32; fy.count = 1;
-        fz.name = "z"; fz.offset =  8; fz.datatype = sensor_msgs::msg::PointField::FLOAT32; fz.count = 1;
-        fi.name = "intensity"; fi.offset = 12; fi.datatype = sensor_msgs::msg::PointField::FLOAT32; fi.count = 1;
+        fx.name = "x";
+        fx.offset = 0;
+        fx.datatype = sensor_msgs::msg::PointField::FLOAT32;
+        fx.count = 1;
+        fy.name = "y";
+        fy.offset = 4;
+        fy.datatype = sensor_msgs::msg::PointField::FLOAT32;
+        fy.count = 1;
+        fz.name = "z";
+        fz.offset = 8;
+        fz.datatype = sensor_msgs::msg::PointField::FLOAT32;
+        fz.count = 1;
+        fi.name = "intensity";
+        fi.offset = 12;
+        fi.datatype = sensor_msgs::msg::PointField::FLOAT32;
+        fi.count = 1;
 
-        cloud_msg.fields    = {fx, fy, fz, fi};
+        cloud_msg.fields = {fx, fy, fz, fi};
         cloud_msg.point_step = 16;
-        cloud_msg.row_step   = cloud_msg.point_step * num_points;
+        cloud_msg.row_step = cloud_msg.point_step * num_points;
         cloud_msg.data.resize(cloud_msg.row_step);
 
         for (int i = 0; i < num_points; ++i)
         {
-            float *p = reinterpret_cast<float*>(&cloud_msg.data[i * cloud_msg.point_step]);
+            float *p = reinterpret_cast<float *>(&cloud_msg.data[i * cloud_msg.point_step]);
             p[0] = static_cast<float>(point_cloud[i].x);
             p[1] = static_cast<float>(point_cloud[i].y);
             p[2] = static_cast<float>(point_cloud[i].z);
@@ -499,27 +533,29 @@ namespace ugv_driver
 
     void UGVDriver::publishLidar2D(const rclcpp::Time &current_time)
     {
-        if (!lidar_2d_) return;
+        if (!lidar_2d_)
+            return;
 
-        const float *range_image        = wb_lidar_get_range_image(lidar_2d_);
-        int          horizontal_res     = wb_lidar_get_horizontal_resolution(lidar_2d_);
-        double       fov                = wb_lidar_get_fov(lidar_2d_);
-        double       max_range          = wb_lidar_get_max_range(lidar_2d_);
-        double       min_range          = wb_lidar_get_min_range(lidar_2d_);
+        const float *range_image = wb_lidar_get_range_image(lidar_2d_);
+        int horizontal_res = wb_lidar_get_horizontal_resolution(lidar_2d_);
+        double fov = wb_lidar_get_fov(lidar_2d_);
+        double max_range = wb_lidar_get_max_range(lidar_2d_);
+        double min_range = wb_lidar_get_min_range(lidar_2d_);
 
-        if (!range_image || horizontal_res <= 0) return;
+        if (!range_image || horizontal_res <= 0)
+            return;
 
         sensor_msgs::msg::LaserScan scan_msg;
-        scan_msg.header.stamp    = current_time;
-        scan_msg.header.frame_id = frame_prefix_ + "lidar_2d";   // match URDF link name
+        scan_msg.header.stamp = current_time;
+        scan_msg.header.frame_id = frame_prefix_ + "lidar_2d"; // match URDF link name
 
-        scan_msg.angle_min      = -fov / 2.0;
-        scan_msg.angle_max      =  fov / 2.0;
+        scan_msg.angle_min = -fov / 2.0;
+        scan_msg.angle_max = fov / 2.0;
         scan_msg.angle_increment = fov / (horizontal_res - 1);
         scan_msg.time_increment = 0.0;
-        scan_msg.scan_time      = timestep_ms_ / 1000.0;
-        scan_msg.range_min      = min_range;
-        scan_msg.range_max      = max_range;
+        scan_msg.scan_time = timestep_ms_ / 1000.0;
+        scan_msg.range_min = min_range;
+        scan_msg.range_max = max_range;
 
         scan_msg.ranges.resize(horizontal_res);
         scan_msg.intensities.resize(horizontal_res);
@@ -542,24 +578,26 @@ namespace ugv_driver
 
     void UGVDriver::publishCamera(const rclcpp::Time &current_time)
     {
-        if (!camera_rgb_) return;
+        if (!camera_rgb_)
+            return;
 
         const unsigned char *image_data = wb_camera_get_image(camera_rgb_);
-        int    width  = wb_camera_get_width(camera_rgb_);
-        int    height = wb_camera_get_height(camera_rgb_);
-        double fov    = wb_camera_get_fov(camera_rgb_);
+        int width = wb_camera_get_width(camera_rgb_);
+        int height = wb_camera_get_height(camera_rgb_);
+        double fov = wb_camera_get_fov(camera_rgb_);
 
-        if (!image_data || width <= 0 || height <= 0) return;
+        if (!image_data || width <= 0 || height <= 0)
+            return;
 
         // Image
         sensor_msgs::msg::Image img_msg;
-        img_msg.header.stamp    = current_time;
+        img_msg.header.stamp = current_time;
         img_msg.header.frame_id = frame_prefix_ + "camera_rgb";
-        img_msg.height          = height;
-        img_msg.width           = width;
-        img_msg.encoding        = "bgra8";
-        img_msg.is_bigendian    = false;
-        img_msg.step            = width * 4;
+        img_msg.height = height;
+        img_msg.width = width;
+        img_msg.encoding = "bgra8";
+        img_msg.is_bigendian = false;
+        img_msg.step = width * 4;
 
         img_msg.data.resize(img_msg.step * height);
         std::memcpy(img_msg.data.data(), image_data, img_msg.step * height);
@@ -571,48 +609,50 @@ namespace ugv_driver
         sensor_msgs::msg::CameraInfo info;
         info.header = img_msg.header;
         info.height = height;
-        info.width  = width;
+        info.width = width;
         info.distortion_model = "plumb_bob";
         info.d = {0.0, 0.0, 0.0, 0.0, 0.0};
 
-        info.k = {fx, 0, width/2.0, 0, fx, height/2.0, 0, 0, 1.0};
+        info.k = {fx, 0, width / 2.0, 0, fx, height / 2.0, 0, 0, 1.0};
         info.r = {1, 0, 0, 0, 1, 0, 0, 0, 1};
-        info.p = {fx, 0, width/2.0, 0,  0, fx, height/2.0, 0,  0, 0, 1.0, 0};
+        info.p = {fx, 0, width / 2.0, 0, 0, fx, height / 2.0, 0, 0, 0, 1.0, 0};
 
         camera_rgb_info_pub_->publish(info);
     }
 
     void UGVDriver::publishDepthCamera(const rclcpp::Time &current_time)
     {
-        if (!camera_depth_) return;
+        if (!camera_depth_)
+            return;
 
         const float *range_image = wb_range_finder_get_range_image(camera_depth_);
-        int    width    = wb_range_finder_get_width(camera_depth_);
-        int    height   = wb_range_finder_get_height(camera_depth_);
-        double fov      = wb_range_finder_get_fov(camera_depth_);
+        int width = wb_range_finder_get_width(camera_depth_);
+        int height = wb_range_finder_get_height(camera_depth_);
+        double fov = wb_range_finder_get_fov(camera_depth_);
         double max_range = wb_range_finder_get_max_range(camera_depth_);
 
-        if (!range_image || width <= 0 || height <= 0) return;
+        if (!range_image || width <= 0 || height <= 0)
+            return;
 
         // Depth image (32FC1)
         sensor_msgs::msg::Image depth_msg;
-        depth_msg.header.stamp    = current_time;
+        depth_msg.header.stamp = current_time;
         depth_msg.header.frame_id = frame_prefix_ + "camera_depth";
-        depth_msg.height          = height;
-        depth_msg.width           = width;
-        depth_msg.encoding        = "32FC1";
-        depth_msg.is_bigendian    = false;
-        depth_msg.step            = width * sizeof(float);
+        depth_msg.height = height;
+        depth_msg.width = width;
+        depth_msg.encoding = "32FC1";
+        depth_msg.is_bigendian = false;
+        depth_msg.step = width * sizeof(float);
 
         depth_msg.data.resize(depth_msg.step * height);
-        float *depth_data = reinterpret_cast<float*>(depth_msg.data.data());
+        float *depth_data = reinterpret_cast<float *>(depth_msg.data.data());
 
         for (int i = 0; i < width * height; ++i)
         {
             float r = range_image[i];
             depth_data[i] = (std::isinf(r) || r >= max_range)
-                            ? std::numeric_limits<float>::quiet_NaN()
-                            : r;
+                                ? std::numeric_limits<float>::quiet_NaN()
+                                : r;
         }
 
         camera_depth_pub_->publish(depth_msg);
@@ -623,32 +663,43 @@ namespace ugv_driver
         sensor_msgs::msg::CameraInfo info;
         info.header = depth_msg.header;
         info.height = height;
-        info.width  = width;
+        info.width = width;
         info.distortion_model = "plumb_bob";
         info.d = {0.0, 0.0, 0.0, 0.0, 0.0};
 
-        info.k = {fx, 0, width/2.0, 0, fx, height/2.0, 0, 0, 1.0};
+        info.k = {fx, 0, width / 2.0, 0, fx, height / 2.0, 0, 0, 1.0};
         info.r = {1, 0, 0, 0, 1, 0, 0, 0, 1};
-        info.p = {fx, 0, width/2.0, 0,  0, fx, height/2.0, 0,  0, 0, 1.0, 0};
+        info.p = {fx, 0, width / 2.0, 0, 0, fx, height / 2.0, 0, 0, 0, 1.0, 0};
 
         camera_depth_info_pub_->publish(info);
     }
 
     void UGVDriver::step()
     {
-        rclcpp::Time current_time = node_->now();
+        // rclcpp::Time current_time = node_->now();
+
+        // Get Webots simulation time directly (seconds)
+        double sim_time = wb_robot_get_time();
+
+        // Create rclcpp::Time from sim_time (seconds to nanoseconds)
+        rclcpp::Time current_time = rclcpp::Time(static_cast<uint64_t>(sim_time * 1e9));
+
+        // Publish local clock for the robot's domain
+        rosgraph_msgs::msg::Clock clock_msg;
+        clock_msg.clock = current_time;
+        clock_pub_->publish(clock_msg);
 
         // Motor commands
         const double v = cmd_vel_.linear.x;
         const double w = cmd_vel_.angular.z;
 
-        const double v_left  = v - (w * track_width_ / 2.0);
+        const double v_left = v - (w * track_width_ / 2.0);
         const double v_right = v + (w * track_width_ / 2.0);
 
-        wb_motor_set_velocity(left_front_motor_,  v_left  / wheel_radius_);
-        wb_motor_set_velocity(left_rear_motor_,   v_left  / wheel_radius_);
+        wb_motor_set_velocity(left_front_motor_, v_left / wheel_radius_);
+        wb_motor_set_velocity(left_rear_motor_, v_left / wheel_radius_);
         wb_motor_set_velocity(right_front_motor_, v_right / wheel_radius_);
-        wb_motor_set_velocity(right_rear_motor_,  v_right / wheel_radius_);
+        wb_motor_set_velocity(right_rear_motor_, v_right / wheel_radius_);
 
         // Publish all sensors
         updateOdometry(current_time);
