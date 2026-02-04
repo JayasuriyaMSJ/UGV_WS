@@ -45,6 +45,7 @@ namespace ugv_driver
         rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
         rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub_;
         rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
+        rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clock_pub_;
 
         // 3D Lidar Publisher
         rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr lidar_3d_pub_;
@@ -59,7 +60,7 @@ namespace ugv_driver
         // Camera publishers -- RGBD
         rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr camera_depth_pub_;
         rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr camera_depth_info_pub_;
-        rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clock_pub_;
+
         std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 
         geometry_msgs::msg::Twist cmd_vel_;
